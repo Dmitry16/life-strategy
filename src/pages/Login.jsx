@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 
-const Skillset = () => {
+const Login = () => {
     return (
         <Box sx={{ mx: 8 }}>
             <Stack spacing={0}>
@@ -9,11 +9,11 @@ const Skillset = () => {
                     Dmytro Davydov
                 </Typography>
                 <Typography variant="h2" component="h1" color="text.darkBlue">
-                    Skillset
+                    Login
                 </Typography>
             </Stack>
         </Box>
     );
 };
 
-export default Skillset;
+export default Login;

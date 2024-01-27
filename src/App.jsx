@@ -11,6 +11,7 @@ export default function App() {
     <Container maxWidth="xl" sx={{backgroundColor: '#ddddee'}}>
       <Container maxWidth="md"
         sx={{
+          minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',

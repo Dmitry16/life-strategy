@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 
-const Portfolio = () => {
+const LSUnits = () => {
     return (
         <Box sx={{ mx: 8 }}>
             <Stack spacing={0}>
@@ -9,11 +9,11 @@ const Portfolio = () => {
                     Dmytro Davydov
                 </Typography>
                 <Typography variant="h2" component="h1" color="text.darkBlue">
-                    Portfolio
+                    LSUnits
                 </Typography>
             </Stack>
         </Box>
     );
 };
 
-export default Portfolio;
+export default LSUnits;

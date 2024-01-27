@@ -1,21 +1,19 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Resume from '../pages/Resume';
-import Skillset from '../pages/Skillset';
-import Portfolio from '../pages/Portfolio';
+import LSUnits from '../pages/LSUnits';
+import Cabinet from '../pages/Cabinet';
+import Login from '../pages/Login';
 import Contacts from '../pages/Contacts';
-import Blog from '../pages/Blog';
 import Home from '../pages/Home';
 
 const Content = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/skillset" element={<Skillset />} />
-            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/life-strategy-units" element={<LSUnits />} />
+            <Route path="/cabinet" element={<Cabinet />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/contacts" element={<Contacts />} />
-            <Route path="/blog" element={<Blog />} />
         </Routes>
     );
 };
