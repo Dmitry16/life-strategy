@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import LSUnits from '../pages/LSUnits';
+import LifeStrategy from '../pages/LifeStrategy';
 import Cabinet from '../pages/Cabinet';
 import Login from '../pages/Login';
 import Contacts from '../pages/Contacts';
@@ -10,7 +10,7 @@ const Content = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/life-strategy-units" element={<LSUnits />} />
+            <Route path="/life-strategy" element={<LifeStrategy />} />
             <Route path="/cabinet" element={<Cabinet />} />
             <Route path="/login" element={<Login />} />
             <Route path="/contacts" element={<Contacts />} />

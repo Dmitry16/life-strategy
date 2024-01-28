@@ -8,14 +8,16 @@ import Menu from './components/Menu';
 
 export default function App() {
   return (
-    <Container maxWidth="xl" sx={{backgroundColor: '#ddddee'}}>
+    <Container maxWidth="xl" sx={{
+      // backgroundColor: '#ddddee'
+    }}>
       <Container maxWidth="md"
         sx={{
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          backgroundColor: 'rgba(255, 255, 120, 0.6)',
+          // backgroundColor: 'rgba(255, 255, 120, 0.6)',
           // backgroundColor: '#f5f5aa',
         }}>
         <Box sx={{}}>

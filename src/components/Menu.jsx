@@ -12,7 +12,7 @@ const Menu = () => {
         }}>
             <Toolbar sx={{}} disableGutters>
                 <ButtonRouter text='Home' href={'/'}/>
-                <ButtonRouter text='LSUnits' href={'/life-strategy-units'}/>
+                <ButtonRouter text='Life Strategy' href={'/life-strategy'}/>
                 <ButtonRouter text='Cabinet' href={'/cabinet'}/>
                 <ButtonRouter text='Login' href={'/login'}/>
                 <ButtonRouter text='Contacts' href={'/contacts'}/>
