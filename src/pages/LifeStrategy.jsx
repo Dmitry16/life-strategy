@@ -1,5 +1,8 @@
 import React from 'react';
-import { Box, Stack, Typography, List, ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { Box, Stack, Typography, List, ListItem, ListItemText, ListItemButton,
+    Accordion, AccordionSummary, AccordionDetails,
+} from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
@@ -17,67 +20,56 @@ const LifeStrategy = () => {
                     Is an integrated set of choices and actions that enables a person to achieve
                     the best possible outcomes in life.
                 </Typography>
-                <Typography variant="h5" component="h1" color="text.darkBlue">
-                    To create a Life Strategy, you need to answer the following questions:
-                </Typography>
-                <List>
-                    <StyledListItem>
-                        <ListItemButton>
-                        <ListItemText
-                            primary="How do I define a great life?"
-                            secondary="Click for more info."
-                        />
-                        </ListItemButton>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <ListItemButton>
-                        <ListItemText
-                            primary="What is my life purpose?"
-                            secondary="Click for more info."
-                        />
-                        </ListItemButton>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <ListItemButton>
-                        <ListItemText
-                            primary="What is my life vision?"
-                            secondary="Click for more info."
-                        />
-                        </ListItemButton>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <ListItemButton>
-                        <ListItemText
-                            primary="How do I assess my life portfolio?"
-                            secondary="Click for more info."
-                        />
-                        </ListItemButton>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <ListItemButton>
-                        <ListItemText
-                            primary="What can I learn from best practises and benchmarks?"
-                            secondary="Click for more info."
-                        />
-                        </ListItemButton>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <ListItemButton>
-                        <ListItemText
-                            primary="What life portfolio choices can I make?"
-                            secondary="Click for more info."
-                        />
-                        </ListItemButton>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <ListItemButton>
-                        <ListItemText
-                            primary="How can I ensure successful, sustained life change?"
-                            secondary="Click for more info."
-                        />
-                        </ListItemButton>
-                    </StyledListItem>
-                </List>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ArrowDropDownIcon />}
+                        aria-controls="panel-content"
+                        id="panel-header"
+                    >
+                        <Typography variant="h6" component="h1" color="text.darkBlue">
+                            To create a Life Strategy, you need to answer the following questions:
+                        </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <List dense>
+                            <StyledListItem>
+                                <ListItemButton>
+                                <ListItemText primary="How do I define a great life?"/>
+                                </ListItemButton>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <ListItemButton>
+                                <ListItemText primary="What is my life purpose?"/>
+                                </ListItemButton>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <ListItemButton>
+                                <ListItemText primary="What is my life vision?"/>
+                                </ListItemButton>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <ListItemButton>
+                                <ListItemText primary="How do I assess my life portfolio?"/>
+                                </ListItemButton>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <ListItemButton>
+                                <ListItemText primary="What can I learn from best practises and benchmarks?"/>
+                                </ListItemButton>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <ListItemButton>
+                                <ListItemText primary="What life portfolio choices can I make?"/>
+                                </ListItemButton>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <ListItemButton>
+                                <ListItemText primary="How can I ensure successful, sustained life change?"/>
+                                </ListItemButton>
+                            </StyledListItem>
+                        </List>
+                    </AccordionDetails>
+                </Accordion>
             </Stack>
         </Box>
     );
