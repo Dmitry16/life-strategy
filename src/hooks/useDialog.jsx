@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogTitle, IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const useDialog = () => {
     const [open, setOpen] = useState(false);
+    const [content, setContent] = useState('');
     
     const handleClose = () => {
         setOpen(false);
     };
 
-    const handleOpen = () => {
+    const openDialog = ({ content }) => {
+        setContent(content);
         setOpen(true);
     };
 
-    const DialogComponent = ({ title, content, transition }) => {
+    const DialogComponent = () => {
         return (
             <Dialog
                 open={open}
-                TransitionComponent={transition}
+                TransitionComponent={Transition}
                 keepMounted
                 onClose={handleClose}
                 maxWidth='md'
                 area-aria-describedby='alert-dialog-slide-description'
             >
                 <DialogTitle>
-                    <Typography variant="h4" component="h1" color="text.darkBlue">
-                        {title}
-                    </Typography>
                     <IconButton
                         aria-label="close"
                         onClick={handleClose}
@@ -41,13 +45,15 @@ const useDialog = () => {
                     </IconButton>
                 </DialogTitle>
                 <DialogContent>
-                    {content}
+                    <Typography variant="h5" component="h1" color="text.darkBlue" sx={{m:2}}>
+                        {content}
+                    </Typography>
                 </DialogContent>
             </Dialog>
         );
     };
 
-    return [DialogComponent, handleOpen];
+    return [DialogComponent, openDialog];
 }
 
 export default useDialog;
