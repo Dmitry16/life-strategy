@@ -12,10 +12,9 @@ const Menu = () => {
         }}>
             <Toolbar sx={{}} disableGutters>
                 <ButtonRouter text='Home' href={'/'}/>
-                <ButtonRouter text='Life Strategy' href={'/life-strategy'}/>
-                <ButtonRouter text='Cabinet' href={'/cabinet'}/>
+                <ButtonRouter text='Create Life Strategy' href={'/create-life-strategy'}/>
                 <ButtonRouter text='Login' href={'/login'}/>
-                <ButtonRouter text='Contacts' href={'/contacts'}/>
+                <ButtonRouter text='About' href={'/about'}/>
             </Toolbar>
         </Box>
     );

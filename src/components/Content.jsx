@@ -1,19 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import LifeStrategy from '../pages/LifeStrategy';
-import Cabinet from '../pages/Cabinet';
+import CreateLifeStrategy from '../pages/CreateLifeStrategy';
 import Login from '../pages/Login';
-import Contacts from '../pages/Contacts';
 import Home from '../pages/Home';
+import About from '../pages/About';
 
 const Content = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/life-strategy" element={<LifeStrategy />} />
-            <Route path="/cabinet" element={<Cabinet />} />
+            <Route path="/create-life-strategy" element={<CreateLifeStrategy />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/about" element={<About />} />
         </Routes>
     );
 };
