@@ -9,7 +9,7 @@ const Content = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/create-life-strategy" element={<CreateLifeStrategy />} />
+            <Route path="/strategize" element={<CreateLifeStrategy />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
         </Routes>

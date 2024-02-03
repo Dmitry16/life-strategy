@@ -17,17 +17,13 @@ const Home = () => {
         <Box sx={{ mx: 8 }}>
             <Stack spacing={2}>
                 <Typography variant="h5" component="h1" color="text.darkBlue">
-                    Life Strategy
-                </Typography>
-                <Typography variant="body1" component="h1" color="text.darkBlue">
-                    Is an integrated set of choices and actions that enables a person to achieve
-                    the best possible outcomes in order to have the desired life.
+                    Strategic Life: Applying Boardroom Thinking to Personal Success
                 </Typography>
                 <Typography variant="h5" component="h1" color="text.darkBlue">
-                    Design your desired Life
+                    Design Your Desired Life
                 </Typography>
                 <Typography variant="h5" component="h1" color="text.darkBlue">
-                    Create your Life Strategy
+                    Create Your Life Strategy
                 </Typography>
             </Stack>
         </Box>
