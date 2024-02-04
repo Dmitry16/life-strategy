@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Paper, Stack, Typography, Grid } from '@mui/material';
-import SLA from './StrategicLifeAreas';
+import StrategicAreas from './StrategicAreas';
 import Explanation from './Explanation';
+import Chart from './Chart';
 
 const Login = () => {
     return (
@@ -15,9 +16,14 @@ const Login = () => {
                     Strategic Life Areas
                 </Typography>
                 <Box sx={{ mt: 2 }}>
-                    {/* <Paper elevation={1} sx={{ p: 2 }}> */}
-                        <SLA />
-                    {/* </Paper> */}
+                    <Grid container spacing={2}>
+                        <Grid item xs={4}>
+                            <StrategicAreas />
+                        </Grid>
+                        <Grid item xs={8}>
+                            <Chart />
+                        </Grid>
+                    </Grid>
                 </Box>
             </Stack>
         </Box>
