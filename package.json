@@ -12,10 +12,10 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "^5.15.5",
     "@mui/material": "latest",
-    "@mui/x-charts": "^6.19.3",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "^6.21.3"
+    "react-router-dom": "^6.21.3",
+    "recharts": "^2.11.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "latest",
