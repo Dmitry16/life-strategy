@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 
 const data01 = [
-    { x: 100, y: 200, z: 200 },
+    { x: 100, y: 200, z: 750 },
     { x: 120, y: 100, z: 260 },
     { x: 170, y: 300, z: 400 },
     { x: 140, y: 250, z: 280 },
@@ -45,8 +45,8 @@ const Chart = () => {
             <ZAxis type="number" dataKey="z" range={[60, 400]} name="score" unit="km" />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
             <Legend />
-            <Scatter name="A school" data={data01} fill="#8884d8" shape="star" />
-            <Scatter name="B school" data={data02} fill="#82ca9d" shape="triangle" />
+            <Scatter name="A school" data={data01} fill="#8884d8" />
+            <Scatter name="B school" data={data02} fill="#82ca9d" />
           </ScatterChart>
         </ResponsiveContainer>
     );

@@ -7,15 +7,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const useDialog = () => {
+const useDialog = dialogContent => {
     const [open, setOpen] = useState(false);
-    const [content, setContent] = useState('');
+    const [content, setContent] = useState(dialogContent?.content || '');
     
     const handleClose = () => {
         setOpen(false);
     };
 
-    const openDialog = ({ content }) => {
+    // const openDialog = ({ content }) => {
+    const openDialog = () => {
         setContent(content);
         setOpen(true);
     };

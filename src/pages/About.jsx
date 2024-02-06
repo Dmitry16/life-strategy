@@ -26,6 +26,19 @@ const About = () => {
                             Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
                             Sed nisi. Nulla quis sem at nibh elementum imperdiet.
                         </Typography>
+                        <Typography variant="h5" component="h1" color="text.darkBlue">
+                            Life Strategy
+                        </Typography>
+                        <Typography variant="body1" component="h1" color="text.darkBlue">
+                            Is an integrated set of choices and actions that enables a person to achieve
+                            the best possible outcomes in order to have the desired life.
+                        </Typography>
+                        <Typography variant="h5" component="h1" color="text.darkBlue">
+                            Strategic Life Areas
+                        </Typography>
+                        <Typography variant="body1" component="h1" color="text.darkBlue">
+                            Life Strategy is built on the foundation of strategic life areas. These are areas of life that are important to you and that you want to improve.
+                        </Typography>
                     </Grid>
                     <Grid item xs={4}>
                         <Paper elevation={1} sx={{ mb:2, p:2 }}>

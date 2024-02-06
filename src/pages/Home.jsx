@@ -17,13 +17,13 @@ const Home = () => {
         <Box sx={{ mx: 8 }}>
             <Stack spacing={2}>
                 <Typography variant="h5" component="h1" color="text.darkBlue">
-                    Strategic Life: Applying Boardroom Thinking to Personal Success
-                </Typography>
-                <Typography variant="h5" component="h1" color="text.darkBlue">
                     Design Your Desired Life
                 </Typography>
                 <Typography variant="h5" component="h1" color="text.darkBlue">
                     Create Your Life Strategy
+                </Typography>
+                <Typography variant="h5" component="h1" color="text.darkBlue">
+                    Strategic Life: Applying Boardroom Thinking to Personal Success
                 </Typography>
             </Stack>
         </Box>

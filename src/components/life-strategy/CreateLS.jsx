@@ -1,16 +1,36 @@
 import React from 'react';
-import { Box, Paper, Stack, Typography, Grid } from '@mui/material';
+import { Box, Paper, Stack, Typography, Grid, Button} from '@mui/material';
 import StrategicAreas from './StrategicAreas';
 import Explanation from './Explanation';
 import Chart from './Chart';
+import useDialog from '../../hooks/useDialog';
+
+// 'This tool is designed to help you create your life strategy. You can use it to analyze your life and set goals for the future. You can also use it to track your progress and make adjustments to your strategy. To get started, click on the "Strategic Life Areas" tab and start adding your goals. You can also use the "Explanation" tab to learn more about the tool and how to use it. Good luck!'
+
+const dialogContent = {
+    title: 'Usage Instructions',
+    content: `This tool is designed to help you create a life strategy.
+    It is based on the concept of life areas and their importance.
+    You can add, remove and edit life areas and their importance.
+    The chart will show you the current state of your life strategy.
+    The goal is to have a balanced life strategy.
+    You can use the chart to see which areas need more attention and which areas are doing well.
+    `,
+};
 
 const Login = () => {
+    const [DialogComponent, openDialog] = useDialog(dialogContent);
+
     return (
         <Box sx={{ mx: 8 }}>
             <Stack spacing={2}>
-                <Explanation />
                 <Typography variant="h5" component="h1" color="text.darkBlue">
-                    Create your Life Strategy
+                    Let's create your Life Strategy!
+                </Typography>
+                <Typography variant="body1" component="h1" color="text.darkBlue">
+                    <Button onClick={openDialog} variant="text" color="primary">
+                        How to use this tool?
+                    </Button>
                 </Typography>
                 <Typography variant="h5" component="h1" color="text.darkBlue">
                     Strategic Life Areas
@@ -26,6 +46,7 @@ const Login = () => {
                     </Grid>
                 </Box>
             </Stack>
+            <DialogComponent />
         </Box>
     );
 };
