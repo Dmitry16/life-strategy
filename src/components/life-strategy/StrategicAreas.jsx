@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Grid, Paper, Stack, Typography,
-    List, ListItem, ListItemText, ListItemButton
+import { Box, Paper, Stack, Typography,
+    List, ListItem, ListItemText, Accordion, AccordionSummary, AccordionDetails,
 } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
 import Metrics from './Metrics';
 
@@ -12,31 +13,41 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 const StrategicAreas = () => {
     return (
         <Box sx={{ mt: 2 }}>
-            <Paper elevation={1} sx={{ mb:2, p:2 }}>
-                <Typography variant="h6" component="h2" color="text.darkBlue">
-                    Relationships
-                </Typography>
-                <List dense>
-                    <StyledListItem>
-                        <Stack spacing={0}>
-                            <ListItemText primary="Significant other"/>
-                            <Metrics />
-                        </Stack>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <Stack spacing={0}>
-                            <ListItemText primary="Family"/>
-                            <Metrics />
-                        </Stack>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <Stack spacing={0}>
-                            <ListItemText primary="Friendship"/>
-                            <Metrics />
-                        </Stack>
-                    </StyledListItem>
-                </List>
-            </Paper>
+            {/* <Paper elevation={1} sx={{ mb:2, p:2 }}> */}
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ArrowDropDownIcon />}
+                        aria-controls="panel-content"
+                        id="panel-header"
+                    >
+                        <Typography variant="h6" component="h2" color="text.darkBlue">
+                            Relationships
+                        </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <List dense>
+                            <StyledListItem>
+                                <Stack spacing={0}>
+                                    <ListItemText primary="Significant other"/>
+                                    <Metrics />
+                                </Stack>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <Stack spacing={0}>
+                                    <ListItemText primary="Family"/>
+                                    <Metrics />
+                                </Stack>
+                            </StyledListItem>
+                            <StyledListItem>
+                                <Stack spacing={0}>
+                                    <ListItemText primary="Friendship"/>
+                                    <Metrics />
+                                </Stack>
+                            </StyledListItem>
+                        </List>
+                    </AccordionDetails>
+                </Accordion>
+            {/* </Paper> */}
             <Paper elevation={1} sx={{ mb:2, p:2 }}>
                 <Typography variant="h6" component="h2" color="text.darkBlue">
                     Body, Mind and Spirituality

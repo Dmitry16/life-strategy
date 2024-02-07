@@ -16,7 +16,7 @@ const Explanation = () => {
     return (
         <Box sx={{ mx: 8 }}>
             <Stack spacing={2}>
-                <Typography variant="h5" component="h1" color="text.darkBlue">
+                {/* <Typography variant="h5" component="h1" color="text.darkBlue">
                         Life Strategy
                 </Typography>
                 <Typography variant="body1" component="h1" color="text.darkBlue">
@@ -28,8 +28,8 @@ const Explanation = () => {
                 </Typography>
                 <Typography variant="body1" component="h1" color="text.darkBlue">
                     Life Strategy is built on the foundation of strategic life areas. These are areas of life that are important to you and that you want to improve.
-                </Typography>
-                {/* <Accordion>
+                </Typography> */}
+                <Accordion>
                     <AccordionSummary
                         expandIcon={<ArrowDropDownIcon />}
                         aria-controls="panel-content"
@@ -100,7 +100,7 @@ const Explanation = () => {
                         </List>
                         <DialogComponent />
                     </AccordionDetails>
-                </Accordion> */}
+                </Accordion>
             </Stack>
         </Box>
     );

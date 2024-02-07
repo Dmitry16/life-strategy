@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Stack, Typography, Grid, Paper, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Explanation from '../components/life-strategy/Explanation';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
@@ -10,6 +11,7 @@ const About = () => {
     return (
         <Box sx={{ mx: 8 }}>
             <Stack spacing={2}>
+                <Explanation />
                 <Grid container spacing={2}>
                     <Grid item xs={16}>
                          <Typography variant="h5" component="h1" color="text.darkBlue">
