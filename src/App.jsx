@@ -11,7 +11,7 @@ export default function App() {
     <Container maxWidth="xl" sx={{
       // backgroundColor: '#ddddee'
     }}>
-      <Container maxWidth="md"
+      <Container maxWidth="lg"
         sx={{
           minHeight: '100vh',
           display: 'flex',

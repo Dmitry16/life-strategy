@@ -3,6 +3,7 @@ import { Box, Grid, Paper, Stack, Typography,
     List, ListItem, ListItemText, ListItemButton
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Metrics from './Metrics';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
@@ -17,13 +18,22 @@ const StrategicAreas = () => {
                 </Typography>
                 <List dense>
                     <StyledListItem>
-                        <ListItemText primary="Significant other"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Significant other"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                     <StyledListItem>
-                        <ListItemText primary="Family"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Family"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                     <StyledListItem>
-                        <ListItemText primary="Friendship"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Friendship"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                 </List>
             </Paper>
@@ -33,13 +43,22 @@ const StrategicAreas = () => {
                 </Typography>
                 <List dense>
                     <StyledListItem>
-                        <ListItemText primary="Phisical health/sports"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Phisical health/sports"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                     <StyledListItem>
-                        <ListItemText primary="Mental health/mindfulness"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Mental health/mindfulness"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                     <StyledListItem>
-                        <ListItemText primary="Spirituality/faith"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Spirituality/faith"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                 </List>
             </Paper>
@@ -49,10 +68,16 @@ const StrategicAreas = () => {
                 </Typography>
                 <List dense>
                     <StyledListItem>
-                        <ListItemText primary="Community/citizenship"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Community/citizenship"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                     <StyledListItem>
-                        <ListItemText primary="Societal engagement"/>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Societal engagement"/>
+                            <Metrics />
+                        </Stack>
                     </StyledListItem>
                 </List>
             </Paper>
