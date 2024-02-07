@@ -3,7 +3,7 @@ import { Box, Stack, Typography, Grid } from '@mui/material';
 
 const Metrics = () => {
     return (
-        <Grid container spacing={2}>
+        <Grid container spacing={8}>
             <Grid item xs={2}>
                 <Typography variant="caption" component="h1" color="text.darkBlue">
                     Time
