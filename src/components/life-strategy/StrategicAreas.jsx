@@ -96,16 +96,70 @@ const StrategicAreas = () => {
                 <Typography variant="h6" component="h2" color="text.darkBlue">
                     Job, learning and finances
                 </Typography>
+                <List dense>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Job/career"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Education/learning"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Finances"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                </List>
             </Paper>
             <Paper elevation={1} sx={{ mb:2, p:2 }}>
                 <Typography variant="h6" component="h2" color="text.darkBlue">
                     Interests, hobbies and entertainment
                 </Typography>
+                <List dense>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Hobbies/Interests"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Online entertainment"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Offline entertainment"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                </List>
             </Paper>
             <Paper elevation={1} sx={{ mb:2, p:2 }}>
                 <Typography variant="h6" component="h2" color="text.darkBlue">
                     Personal care
                 </Typography>
+                <List dense>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Physiological needs"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                    <StyledListItem>
+                        <Stack spacing={0}>
+                            <ListItemText primary="Activities of daily living"/>
+                            <Metrics />
+                        </Stack>
+                    </StyledListItem>
+                </List>
             </Paper>
         </Box>
     );
