@@ -4,6 +4,7 @@ import StrategicAreas from './StrategicAreas';
 import Explanation from './Explanation';
 import Chart from './Chart';
 import useDialog from '../../hooks/useDialog';
+import StrategicAreasControl from './StrategicAreasControl';
 
 // 'This tool is designed to help you create your life strategy. You can use it to analyze your life and set goals for the future. You can also use it to track your progress and make adjustments to your strategy. To get started, click on the "Strategic Life Areas" tab and start adding your goals. You can also use the "Explanation" tab to learn more about the tool and how to use it. Good luck!'
 
@@ -38,7 +39,7 @@ const Login = () => {
                 <Box sx={{ mt: 2 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
-                            <StrategicAreas />
+                            <StrategicAreasControl />
                         </Grid>
                         <Grid item xs={8}>
                             <Chart />
