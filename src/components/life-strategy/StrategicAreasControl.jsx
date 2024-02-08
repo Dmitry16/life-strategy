@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Stack, Typography, InputLabel, MenuItem, FormControl, Select, Paper } from '@mui/material';
+import { Box, Stack, Typography, InputLabel, MenuItem, FormControl, Select, Paper,
+    FormGroup, FormControlLabel, Checkbox,
+} from '@mui/material';
 import Metrics from './Metrics';
+import LifeAreaUnits from './LifeAreaUnits';
 
 const StrategicAreasControl = () => {
     const [area, setArea] = useState(40);
@@ -28,6 +31,7 @@ const StrategicAreasControl = () => {
                         <MenuItem value={50}>Interests, hobbies and entertainment</MenuItem>
                         <MenuItem value={60}>Personal care</MenuItem>
                     </Select>
+                    <LifeAreaUnits area={area} />
                     <Metrics />
                 </FormControl>
             </Box>
