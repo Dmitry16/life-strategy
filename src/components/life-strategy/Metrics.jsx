@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, Stack, Typography, Grid, Tabs, Tab, Slider } from '@mui/material';
+import { LifeStrategyContext } from '../../context';
 
-const Metrics = () => {
+const Metrics = ({area}) => {
+    const {state, setState} = useContext(LifeStrategyContext);
+    
+    console.log('Metrics::state:::', state);
+
     const [value, setValue] = React.useState('one');
 
     const handleChange = (event, newValue) => {

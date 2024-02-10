@@ -12,7 +12,7 @@ export const initialState = {
             importance: 90,
             timeSpent: 70,
         },
-        friends: {
+        friendship: {
             checked: false,
             satisfaction: 50,
             importance: 70,

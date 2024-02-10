@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
-import { initialState } from '../../state';
-
+import { LifeStrategyContext } from '../../context';
 
 const LifeAreaUnits = ({ area }) => {
-    const [state, setState] = useState(initialState);
+    const { state, setState } = useContext(LifeStrategyContext);
 
-    console.log('state:::', state);
+    console.log('LifeAreaUnits::state:::', state);
 
-    const handleChange = event => {
-        console.log('event.target.checked:::', event.target.value, event.target.name, event.target.checked);
+    const handleChange = ({ target: { value, name, checked }}) => {
+        // console.log('checked:::', value, name, checked);
 
         setState({
             ...state,
-            [event.target.value]: {
-                ...state[event.target.value],
-                [event.target.name]: {
-                    ...state[event.target.value][event.target.name],
-                    checked: event.target.checked,
+            [value]: {
+                ...state[value],
+                [name]: {
+                    ...state[value][name],
+                    checked: checked,
                 },
             },
         });
@@ -28,7 +27,7 @@ const LifeAreaUnits = ({ area }) => {
             return (
                 <FormGroup>
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state['10'].significantOther.checked} name="signOther" size="small"
+                        control={<Checkbox checked={state['10'].significantOther.checked} name="significantOther" size="small"
                         value={10} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Significant other" 
                     />
