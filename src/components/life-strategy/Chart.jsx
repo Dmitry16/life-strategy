@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext } from 'react';
 import {
     ScatterChart,
     Scatter,
@@ -12,44 +12,24 @@ import {
     LabelList,
     ResponsiveContainer,
 } from 'recharts';
-
-const relations = {
-    significantOther: {
-        satisfaction: 30,
-        importance: 60,
-        timeSpent: 21,
-    },
-    family: {
-        satisfaction: 50,
-        importance: 90,
-        timeSpent: 70,
-    },
-    friends: {
-        satisfaction: 50,
-        importance: 70,
-        timeSpent: 7,
-    },
-}
-
-const chartData = Object.entries(relations).map(([name, { satisfaction, importance, timeSpent }]) => ({
-    name,
-    satisfaction,
-    importance,
-    timeSpent,
-}));
-
-// console.log('chartData::::', chartData);
-
-// const rel = [
-//     { x: 100, y: 200, z: 10 },
-//     { x: 120, y: 100, z: 260 },
-//     { x: 170, y: 300, z: 400 },
-//     { x: 140, y: 250, z: 280 },
-//     { x: 700, y: 700, z: 1000 },
-//     { x: 110, y: 280, z: 500 },
-// ];
+import { LifeStrategyContext } from '../../context';
 
 const Chart = () => {
+    const { state } = useContext(LifeStrategyContext);
+    
+    const chartData = Object.entries(state).map(([_, value]) => {
+        return Object.entries(value).map(([key, value]) => {
+            return {
+                name: key,
+                satisfaction: value.satisfaction,
+                importance: value.importance,
+                timeSpent: value.timeSpent,
+            };
+        });
+    }).flat();
+
+    console.log('Chart::state:chartData::', chartData);
+
     return (
         <ResponsiveContainer width="100%" height={500}>
             <ScatterChart

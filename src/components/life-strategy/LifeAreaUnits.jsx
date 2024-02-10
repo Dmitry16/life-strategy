@@ -4,12 +4,9 @@ import { LifeStrategyContext } from '../../context';
 
 const LifeAreaUnits = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
-
-    console.log('LifeAreaUnits::state:::', state);
+    // console.log('LifeAreaUnits::state:::', state);
 
     const handleChange = ({ target: { value, name, checked }}) => {
-        // console.log('checked:::', value, name, checked);
-
         setState({
             ...state,
             [value]: {

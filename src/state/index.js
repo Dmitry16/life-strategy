@@ -62,15 +62,15 @@ export const initialState = {
         },
         learning: {
             checked: false,
-            satisfaction: 50,
-            importance: 90,
+            satisfaction: 70,
+            importance: 80,
             timeSpent: 70,
         },
         finances: {
             checked: true,
             satisfaction: 50,
             importance: 90,
-            timeSpent: 70,
+            timeSpent: 10,
         },
     },
     '50': {
