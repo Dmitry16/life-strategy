@@ -7,8 +7,8 @@ import LifeAreaUnits from './LifeAreaUnits';
 const StrategicAreasControl = () => {
     const [area, setArea] = useState(40);
 
-    const handleChange = (event) => {
-        setArea(event.target.value);
+    const handleChange = ({ target: { value }}) => {
+        setArea(value);
     }
 
     return (
@@ -30,8 +30,8 @@ const StrategicAreasControl = () => {
                         <MenuItem value={50}>Interests, hobbies and entertainment</MenuItem>
                         <MenuItem value={60}>Personal care</MenuItem>
                     </Select>
-                    <LifeAreaUnits area={area} />
-                    <Metrics />
+                    <LifeAreaUnits area={area}/>
+                    <Metrics area={area}/>
                 </FormControl>
             </Box>
         </Paper>

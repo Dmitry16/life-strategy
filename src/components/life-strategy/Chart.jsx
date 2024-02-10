@@ -38,7 +38,7 @@ const chartData = Object.entries(relations).map(([name, { satisfaction, importan
     timeSpent,
 }));
 
-console.log('chartData::::', chartData);
+// console.log('chartData::::', chartData);
 
 // const rel = [
 //     { x: 100, y: 200, z: 10 },

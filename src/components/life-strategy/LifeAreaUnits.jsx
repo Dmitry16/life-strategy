@@ -6,12 +6,20 @@ import { initialState } from '../../state';
 const LifeAreaUnits = ({ area }) => {
     const [state, setState] = useState(initialState);
 
+    console.log('state:::', state);
+
     const handleChange = event => {
-        console.log('event.target.checked:::', event.target);
+        console.log('event.target.checked:::', event.target.value, event.target.name, event.target.checked);
 
         setState({
             ...state,
-            [event.target.name]: event.target.checked,
+            [event.target.value]: {
+                ...state[event.target.value],
+                [event.target.name]: {
+                    ...state[event.target.value][event.target.name],
+                    checked: event.target.checked,
+                },
+            },
         });
     };
 
@@ -20,18 +28,18 @@ const LifeAreaUnits = ({ area }) => {
             return (
                 <FormGroup>
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.signOther} name="signOther" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['10'].significantOther.checked} name="signOther" size="small"
+                        value={10} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Significant other" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.family} name="family" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['10'].family.checked} name="family" size="small"
+                        value={10} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Family" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.friendship} name="friendship" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['10'].friendship.checked} name="friendship" size="small"
+                        value={10} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Friendship" 
                     />
                 </FormGroup>
@@ -40,18 +48,18 @@ const LifeAreaUnits = ({ area }) => {
             return (
                 <FormGroup>
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.phisicalHealth} name="phisicalHealth" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['20'].phisicalHealth.checked} name="phisicalHealth" size="small"
+                        value={20} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Phisical health/sports" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.mentalHealth} name="mentalHealth" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['20'].mentalHealth.checked} name="mentalHealth" size="small"
+                        value={20} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Mental health" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.spirit} name="spirit" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['20'].spirit.checked} name="spirit" size="small"
+                        value={20} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Spirituality" 
                     />
                 </FormGroup>
@@ -60,13 +68,13 @@ const LifeAreaUnits = ({ area }) => {
             return (
                 <FormGroup>
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.community} name="community" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['30'].community.checked} name="community" size="small"
+                        value={30} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Community" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.socialLife} name="socialLife" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['30'].socialLife.checked} name="socialLife" size="small"
+                        value={30} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Social life" 
                     />
                 </FormGroup>
@@ -75,18 +83,18 @@ const LifeAreaUnits = ({ area }) => {
             return (
                 <FormGroup>
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.job} name="job" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['40'].job.checked} name="job" size="small"
+                        value={40} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Job" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.learning} name="learning" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['40'].learning.checked} name="learning" size="small"
+                        value={40} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Learning" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.finances} name="finances" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['40'].finances.checked} name="finances" size="small"
+                        value={40} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Finances" 
                     />
                 </FormGroup>
@@ -95,18 +103,18 @@ const LifeAreaUnits = ({ area }) => {
             return (
                 <FormGroup>
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.interests} name="interests" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['50'].interests.checked} name="interests" size="small"
+                        value={50} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Interests" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.hobbies} name="hobbies" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['50'].hobbies.checked} name="hobbies" size="small"
+                        value={50} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Hobbies" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.fun} name="fun" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['50'].fun.checked} name="fun" size="small"
+                        value={50} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Fun" 
                     />
                 </FormGroup>
@@ -115,13 +123,13 @@ const LifeAreaUnits = ({ area }) => {
             return (
                 <FormGroup>
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.physNeeds} name="physNeeds" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['60'].physNeeds.checked} name="physNeeds" size="small"
+                        value={60} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Physiological Needs" 
                     />
                     <FormControlLabel onChange={handleChange}
-                        control={<Checkbox checked={state.dailyActivities} name="dailyActivities" size="small"
-                        inputProps={{'aria-label': 'controlled'}}/>}
+                        control={<Checkbox checked={state['60'].dailyActivities.checked} name="dailyActivities" size="small"
+                        value={60} inputProps={{'aria-label': 'controlled'}}/>}
                         label="Daily Activities" 
                     />
                 </FormGroup>
