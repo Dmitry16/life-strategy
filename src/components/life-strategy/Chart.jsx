@@ -8,29 +8,50 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
+    Label,  
+    LabelList,
     ResponsiveContainer,
 } from 'recharts';
 
-const data01 = [
-    { x: 100, y: 200, z: 750 },
-    { x: 120, y: 100, z: 260 },
-    { x: 170, y: 300, z: 400 },
-    { x: 140, y: 250, z: 280 },
-    { x: 150, y: 400, z: 500 },
-    { x: 110, y: 280, z: 200 },
-];
-const data02 = [
-    { x: 200, y: 260, z: 240 },
-    { x: 240, y: 290, z: 220 },
-    { x: 190, y: 290, z: 250 },
-    { x: 198, y: 250, z: 210 },
-    { x: 180, y: 280, z: 260 },
-    { x: 210, y: 220, z: 230 },
-];
+const relations = {
+    significantOther: {
+        satisfaction: 30,
+        importance: 60,
+        timeSpent: 21,
+    },
+    family: {
+        satisfaction: 50,
+        importance: 90,
+        timeSpent: 70,
+    },
+    friends: {
+        satisfaction: 50,
+        importance: 70,
+        timeSpent: 7,
+    },
+}
+
+const chartData = Object.entries(relations).map(([name, { satisfaction, importance, timeSpent }]) => ({
+    name,
+    satisfaction,
+    importance,
+    timeSpent,
+}));
+
+console.log('chartData::::', chartData);
+
+// const rel = [
+//     { x: 100, y: 200, z: 10 },
+//     { x: 120, y: 100, z: 260 },
+//     { x: 170, y: 300, z: 400 },
+//     { x: 140, y: 250, z: 280 },
+//     { x: 700, y: 700, z: 1000 },
+//     { x: 110, y: 280, z: 500 },
+// ];
 
 const Chart = () => {
     return (
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width="100%" height={500}>
             <ScatterChart
                 margin={{
                 top: 20,
@@ -40,13 +61,18 @@ const Chart = () => {
                 }}
             >
             <CartesianGrid />
-            <XAxis type="number" dataKey="x" name="stature" unit="cm" />
-            <YAxis type="number" dataKey="y" name="weight" unit="kg" />
-            <ZAxis type="number" dataKey="z" range={[60, 400]} name="score" unit="km" />
+            <XAxis type="number" dataKey="satisfaction" range={[0, 100]} name="satisfaction" unit="">
+                <Label value="satisfaction" offset={0} position="insideBottom" />
+            </XAxis>
+            <YAxis type="number" dataKey="importance" range={[0, 100]} name="importance" unit="">
+                <Label value="importance" angle={-90} position="insideLeft" />
+            </YAxis>
+            <ZAxis type="number" dataKey="timeSpent" range={[0, 100]} name="time spent" unit="h" />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Legend />
-            <Scatter name="A school" data={data01} fill="#8884d8" />
-            <Scatter name="B school" data={data02} fill="#82ca9d" />
+            {/* <Legend /> */}
+            <Scatter name="Life Unit" data={chartData} fill="#8884d8">
+                <LabelList position="top" dataKey="name" />
+            </Scatter>
           </ScatterChart>
         </ResponsiveContainer>
     );

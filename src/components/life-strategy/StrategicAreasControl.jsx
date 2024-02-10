@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box, Stack, Typography, InputLabel, MenuItem, FormControl, Select, Paper,
-    FormGroup, FormControlLabel, Checkbox,
 } from '@mui/material';
 import Metrics from './Metrics';
 import LifeAreaUnits from './LifeAreaUnits';
