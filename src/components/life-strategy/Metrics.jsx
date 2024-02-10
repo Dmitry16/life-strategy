@@ -6,6 +6,7 @@ const Metrics = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
     const [selectedTab, setSelectedTab] = useState('importance');
     const [sliderValue, setSliderValue] = useState(10);
+    console.log('Metrics::state:::', state);
 
     const selectedUnits = area => Object.keys(state[area]).filter(key => state[area][key].checked);
 
@@ -21,15 +22,7 @@ const Metrics = ({ area }) => {
         }, {});
     };
 
-
-
-    console.log('Metrics::state:::', state);
-    // console.log('Metrics::mapSliderValueToSelectedUnits:::', mapSliderValueToSelectedUnits(selectedUnits(area), 30));
-    // console.log('Metrics::sliderValue:::', sliderValue);
-
     const handleSliderChange = (event, newValue) => {
-        // console.log('Metrics::handleSliderChange::newState:', newState);
-
         setSliderValue(newValue);
         setState({
             ...state,

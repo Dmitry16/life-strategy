@@ -41,13 +41,13 @@ const Chart = () => {
                 }}
             >
             <CartesianGrid />
-            <XAxis type="number" dataKey="satisfaction" range={[0, 100]} name="satisfaction" unit="">
+            <XAxis type="number" dataKey="satisfaction" range={[0, 500]} name="satisfaction" unit="">
                 <Label value="satisfaction" offset={0} position="insideBottom" />
             </XAxis>
-            <YAxis type="number" dataKey="importance" range={[0, 100]} name="importance" unit="">
+            <YAxis type="number" dataKey="importance" range={[0, 500]} name="importance" unit="">
                 <Label value="importance" angle={-90} position="insideLeft" />
             </YAxis>
-            <ZAxis type="number" dataKey="timeSpent" range={[0, 100]} name="time spent" unit="h" />
+            <ZAxis type="number" dataKey="timeSpent" range={[0, 500]} name="time spent" unit="h" />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
             {/* <Legend /> */}
             <Scatter name="Life Unit" data={chartData} fill="#8884d8">
