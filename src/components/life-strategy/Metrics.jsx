@@ -1,14 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Box, Stack, Typography, Grid, Tabs, Tab, Slider } from '@mui/material';
 import { LifeStrategyContext } from '../../context';
 
 const Metrics = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
     const [selectedTab, setSelectedTab] = useState('importance');
-    const [sliderValue, setSliderValue] = useState(10);
     console.log('Metrics::state:::', state);
-
+    
     const selectedUnits = area => Object.keys(state[area]).filter(key => state[area][key].checked);
+    
+    const getSliderValue = (selectedUnits, selectedTab) => selectedUnits[0] && state[area][selectedUnits[0]][selectedTab];
+    const [sliderValue, setSliderValue] = useState(getSliderValue(selectedUnits(area), selectedTab));
+
+    useEffect(() => {
+        setSliderValue(getSliderValue(selectedUnits(area), selectedTab));
+    }, [selectedTab, area, state]);
 
     const mapSliderValueToSelectedUnits = (selectedUnits, value) => {
         return selectedUnits.reduce((acc, key) => {
