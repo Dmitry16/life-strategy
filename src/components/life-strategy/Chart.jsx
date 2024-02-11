@@ -28,7 +28,21 @@ const Chart = () => {
         });
     }).flat();
 
-    console.log('Chart::state:chartData::', chartData);
+    // console.log('Chart::state:chartData::', chartData);
+
+    const CustomTooltip = ({ active, payload }) => {
+        if (active && payload && payload.length) {
+          return (
+            <div className="custom-tooltip" style={{backgroundColor: 'rgba(250,250,250,0.9)', padding: 5 }}>
+              <div className="label">{`${payload[0].payload.name}`}</div>
+              <div className="label">{`importance : ${payload[0].payload.importance}`}</div>
+              <div className="label">{`satisfaction : ${payload[0].payload.satisfaction}`}</div>
+              <div className="label">{`time spent : ${payload[0].payload.timeSpent}`}</div>
+            </div>
+          );
+        }
+        return null;
+    };
 
     return (
         <ResponsiveContainer width="100%" height={500}>
@@ -47,11 +61,11 @@ const Chart = () => {
             <YAxis type="number" dataKey="importance" range={[0, 900]} name="importance" unit="">
                 <Label value="importance" angle={-90} position="insideLeft" />
             </YAxis>
-            <ZAxis type="number" dataKey="timeSpent" range={[0, 900]} name="time spent" unit="h" />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <ZAxis type="number" dataKey="timeSpent" range={[0, 900]} name="time spent" unit="" />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />}/>
             {/* <Legend /> */}
             <Scatter name="Life Unit" data={chartData} fill="#8884d8">
-                <LabelList position="top" dataKey="name" />
+                {/* <LabelList position="top" dataKey="name" /> */}
             </Scatter>
           </ScatterChart>
         </ResponsiveContainer>
