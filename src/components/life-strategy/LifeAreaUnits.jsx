@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import { LifeStrategyContext } from '../../context';
 
@@ -6,8 +6,16 @@ const LifeAreaUnits = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
     // console.log('LifeAreaUnits::state:::', state);
 
+    // reading state from local storage
+    useEffect(() => {
+        const localState = JSON.parse(localStorage.getItem('state'));
+        if (localState) {
+            setState(localState);
+        }
+    }, []);
+
     const handleChange = ({ target: { value, name, checked }}) => {
-        setState({
+        const updatedState = {
             ...state,
             [value]: {
                 ...state[value],
@@ -16,7 +24,9 @@ const LifeAreaUnits = ({ area }) => {
                     checked: checked,
                 },
             },
-        });
+        };
+        setState(updatedState);
+        localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
     switch (area) {

@@ -6,6 +6,13 @@ const Metrics = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
     const [selectedTab, setSelectedTab] = useState('importance');
     console.log('Metrics::state:::', state);
+
+    useEffect(() => {
+        const localState = JSON.parse(localStorage.getItem('state'));
+        if (localState) {
+            setState(localState);
+        }
+    }, []);
     
     const selectedUnits = area => Object.keys(state[area]).filter(key => state[area][key].checked);
     
@@ -29,14 +36,16 @@ const Metrics = ({ area }) => {
     };
 
     const handleSliderChange = (event, newValue) => {
-        setSliderValue(newValue);
-        setState({
+        const updatedState = {
             ...state,
             [area]: {
                 ...state[area],
                 ...mapSliderValueToSelectedUnits(selectedUnits(area), newValue),
             },
-        });
+        };
+        setSliderValue(newValue);
+        setState(updatedState);
+        localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
 
