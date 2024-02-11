@@ -98,6 +98,17 @@ const About = () => {
                             <Typography variant="h6" component="h2" color="text.darkBlue">
                                 Job, learning and finances
                             </Typography>
+                            <List dense>
+                                <StyledListItem>
+                                    <ListItemText primary="Job"/>
+                                </StyledListItem>
+                                <StyledListItem>
+                                    <ListItemText primary="Learning"/>
+                                </StyledListItem>
+                                <StyledListItem>
+                                    <ListItemText primary="Finances"/>
+                                </StyledListItem>
+                            </List>
                         </Paper>
                     </Grid>
                     <Grid item xs={4}>
@@ -105,6 +116,17 @@ const About = () => {
                             <Typography variant="h6" component="h2" color="text.darkBlue">
                                 Interests, hobbies and entertainment
                             </Typography>
+                            <List dense>
+                                <StyledListItem>
+                                    <ListItemText primary="Interests"/>
+                                </StyledListItem>
+                                <StyledListItem>
+                                    <ListItemText primary="Hobbies"/>
+                                </StyledListItem>
+                                <StyledListItem>
+                                    <ListItemText primary="Entertainment"/>
+                                </StyledListItem>
+                            </List>
                         </Paper>
                     </Grid>
                     <Grid item xs={4}>
@@ -112,6 +134,14 @@ const About = () => {
                             <Typography variant="h6" component="h2" color="text.darkBlue">
                                 Personal care
                             </Typography>
+                            <List dense>
+                                <StyledListItem>
+                                    <ListItemText primary="Physiological needs"/>
+                                </StyledListItem>
+                                <StyledListItem>
+                                    <ListItemText primary="Activities of daily living"/>
+                                </StyledListItem>
+                            </List>
                         </Paper>
                     </Grid>
                 </Grid>
