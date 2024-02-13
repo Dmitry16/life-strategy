@@ -5,7 +5,7 @@ import { LifeStrategyContext } from '../../context';
 const Metrics = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
     const [selectedTab, setSelectedTab] = useState('importance');
-    console.log('Metrics::state:::', state);
+    // console.log('Metrics::state:::', state);
 
     useEffect(() => {
         const localState = JSON.parse(localStorage.getItem('state'));
@@ -14,9 +14,10 @@ const Metrics = ({ area }) => {
         }
     }, []);
     
-    const selectedUnits = area => Object.keys(state[area]).filter(key => state[area][key].checked);
+    const selectedUnits = area => area && Object.keys(state[area]).filter(key => state[area][key].checked) || [];
     
     const getSliderValue = (selectedUnits, selectedTab) => selectedUnits[0] && state[area][selectedUnits[0]][selectedTab];
+
     const [sliderValue, setSliderValue] = useState(getSliderValue(selectedUnits(area), selectedTab));
 
     useEffect(() => {

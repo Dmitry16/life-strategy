@@ -11,8 +11,8 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
 }));
 
-const CreateLifeStrategy = () => {
-    const [DialogComponent, openDialog] = useDialog();
+const CreateLifeStrategy = React.memo(() => {
+    // const [DialogComponent, openDialog] = useDialog();
 
     return (
         <Box sx={{ mx: 8 }}>
@@ -21,6 +21,6 @@ const CreateLifeStrategy = () => {
             </Stack>
         </Box>
     );
-};
+});
 
 export default CreateLifeStrategy;

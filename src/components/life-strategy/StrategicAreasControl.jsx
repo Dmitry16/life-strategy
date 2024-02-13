@@ -1,18 +1,37 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Box, Stack, Typography, InputLabel, MenuItem, FormControl, Select, Paper,
 } from '@mui/material';
 import Metrics from './Metrics';
 import LifeAreaUnits from './LifeAreaUnits';
 import { LifeStrategyContext } from '../../context';
 
-const StrategicAreasControl = () => {
-    const { state } = useContext(LifeStrategyContext);
-    const [area, setArea] = useState(state && state.selectedArea || '10');
+const StrategicAreasControl = React.memo(() => {
+    const { state, setState } = useContext(LifeStrategyContext);
+    // const [area, setArea] = useState();
+    // localStorage.setItem('state', JSON.stringify(state));
 
-    console.log('StrategicAreasControl::area::', area);
+    useEffect(() => {
+        const localState = JSON.parse(localStorage.getItem('state'));
+        // console.log('StrategicAreasControl::useEffect111:::localState::', localState);
+        if (localState) {
+            setState(localState);
+        }
+    }, []);
+
+    useEffect(() => {
+        // console.log('StrategicAreasControl::useEffect222:::state::', state);
+
+        localStorage.setItem('state', JSON.stringify(state));
+    }, [state.selectedArea]);
+
+    // console.log('StrategicAreasControl::state::', state);
 
     const handleChange = ({ target: { value }}) => {
-        setArea(value);
+        // setArea(value);
+        setState({
+            ...state,
+            selectedArea: value,
+        });
     }
 
     return (
@@ -23,7 +42,7 @@ const StrategicAreasControl = () => {
                     <Select
                         labelId="strategic-areas"
                         id="strategic-areas"
-                        value={area}
+                        value={state.selectedArea}
                         label="Strategic Areas"
                         onChange={handleChange}
                     >
@@ -34,12 +53,12 @@ const StrategicAreasControl = () => {
                         <MenuItem value={50}>Interests, hobbies and entertainment</MenuItem>
                         <MenuItem value={60}>Personal care</MenuItem>
                     </Select>
-                    <LifeAreaUnits area={area}/>
-                    <Metrics area={area}/>
+                    <LifeAreaUnits area={state.selectedArea}/>
+                    <Metrics area={state.selectedArea}/>
                 </FormControl>
             </Box>
         </Paper>
     );
-};
+});
 
 export default StrategicAreasControl;

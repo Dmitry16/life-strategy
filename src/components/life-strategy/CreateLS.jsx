@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Paper, Stack, Typography, Grid, Button} from '@mui/material';
+import React, { useCallback } from 'react';
+import { Box, Paper, Stack, Typography, Grid, Button } from '@mui/material';
 import StrategicAreas from './StrategicAreas';
 import Explanation from './Explanation';
 import Chart from './Chart';
@@ -19,8 +19,12 @@ const dialogContent = {
     `,
 };
 
-const Login = () => {
+const CreateLS = React.memo(() => {
     const [DialogComponent, openDialog] = useDialog(dialogContent);
+
+    const openDialogCallback = useCallback(openDialog, []);
+
+    console.log('CreateLS:::');
 
     return (
         <Box sx={{ mx: 8 }}>
@@ -29,7 +33,7 @@ const Login = () => {
                     Let's create your Life Strategy!
                 </Typography>
                 <Typography variant="body1" component="h1" color="text.darkBlue">
-                    <Button onClick={openDialog} variant="text" color="primary">
+                    <Button onClick={openDialogCallback} variant="text" color="primary">
                         How to use this tool?
                     </Button>
                 </Typography>
@@ -50,6 +54,6 @@ const Login = () => {
             <DialogComponent />
         </Box>
     );
-};
+});
 
-export default Login;
+export default CreateLS;

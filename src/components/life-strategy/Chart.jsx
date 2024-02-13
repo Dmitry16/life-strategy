@@ -14,8 +14,8 @@ import {
 } from 'recharts';
 import { LifeStrategyContext } from '../../context';
 
-const Chart = () => {
-    const { state } = useContext(LifeStrategyContext);
+const Chart = React.memo(() => {
+    const { state, setState } = useContext(LifeStrategyContext);
     
     const chartData = Object.entries(state).map(([_, value]) => {
         return Object.entries(value).map(([key, value]) => {
@@ -28,7 +28,7 @@ const Chart = () => {
         });
     }).flat();
 
-    console.log('Chart::state:::', state);
+    // console.log('Chart::chartData:::', chartData);
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -44,8 +44,15 @@ const Chart = () => {
         return null;
     };
 
-    const handleClick = (e) => {
-        console.log('Chart::handleClick::e::', e);
+    const handleClick = e => {
+        // console.log('Chart::handleClick::e::', e);
+
+        const area = Object.entries(state).find(([_, value]) => Object.keys(value).includes(e.name))[0];
+        setState({
+            ...state,
+            selectedArea: area,
+        });
+        localStorage.setItem('state', JSON.stringify(state));
     };
 
     return (
@@ -74,6 +81,6 @@ const Chart = () => {
           </ScatterChart>
         </ResponsiveContainer>
     );
-};
+});
 
 export default Chart;
