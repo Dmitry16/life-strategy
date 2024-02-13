@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Box, Stack, Typography, InputLabel, MenuItem, FormControl, Select, Paper,
 } from '@mui/material';
 import Metrics from './Metrics';
 import LifeAreaUnits from './LifeAreaUnits';
+import { LifeStrategyContext } from '../../context';
 
 const StrategicAreasControl = () => {
-    const [area, setArea] = useState(40);
+    const { state } = useContext(LifeStrategyContext);
+    const [area, setArea] = useState(state && state.selectedArea || '10');
+
+    console.log('StrategicAreasControl::area::', area);
 
     const handleChange = ({ target: { value }}) => {
         setArea(value);

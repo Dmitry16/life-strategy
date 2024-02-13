@@ -4,7 +4,7 @@ import { LifeStrategyContext } from '../../context';
 
 const LifeAreaUnits = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
-    // console.log('LifeAreaUnits::state:::', state);
+    // console.log('LifeAreaUnits::area:::', area);
 
     // reading state from local storage
     useEffect(() => {
@@ -29,7 +29,7 @@ const LifeAreaUnits = ({ area }) => {
         localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
-    switch (area) {
+    switch (Number(area)) {
         case 10:
             return (
                 <FormGroup>

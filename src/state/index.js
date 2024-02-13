@@ -1,4 +1,5 @@
 export const initialState = {
+    selectedArea: '50',
     '10': {
         significantOther: {
             checked: true,

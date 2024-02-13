@@ -28,7 +28,7 @@ const Chart = () => {
         });
     }).flat();
 
-    // console.log('Chart::state:chartData::', chartData);
+    console.log('Chart::state:::', state);
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -42,6 +42,10 @@ const Chart = () => {
           );
         }
         return null;
+    };
+
+    const handleClick = (e) => {
+        console.log('Chart::handleClick::e::', e);
     };
 
     return (
@@ -64,7 +68,7 @@ const Chart = () => {
             <ZAxis type="number" dataKey="timeSpent" range={[0, 900]} name="time spent" unit="" />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />}/>
             {/* <Legend /> */}
-            <Scatter name="Life Unit" data={chartData} fill="#8884d8">
+            <Scatter name="Life Unit" data={chartData} fill="#8884d8" onClick={handleClick}>
                 {/* <LabelList position="top" dataKey="name" /> */}
             </Scatter>
           </ScatterChart>
