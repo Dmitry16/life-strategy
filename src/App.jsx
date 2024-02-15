@@ -21,18 +21,20 @@ export default function App() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            alignItems: 'stretch'
+
             // backgroundColor: 'rgba(255, 255, 120, 0.6)',
             // backgroundColor: '#f5f5aa',
           }}>
-          <Box sx={{}}>
+          {/* <Box sx={{ flexGrow: '1' }}> */}
             <Menu />
-          </Box>
-          <Box sx={{}}>
+          {/* </Box> */}
+          {/* <Box sx={{ flexGrow: '2' }}> */}
             <Content />
-          </Box>
-          <Box sx={{mb: 2}}>
+          {/* </Box> */}
+          {/* <Box sx={{mb: 2, flexGrow: '1'}}> */}
             <Footer />
-          </Box>
+          {/* </Box> */}
         </Container>
       </Container>
     </LifeStrategyContext.Provider>

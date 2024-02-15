@@ -6,7 +6,7 @@ import Copyright from './Copyright';
 
 const Footer = () => {
     return (
-        <Box sx={{}}>
+        <Box sx={{ mb: 2 }}>
             <Copyright />
         </Box>
     );
