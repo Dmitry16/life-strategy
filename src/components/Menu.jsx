@@ -9,6 +9,7 @@ const Menu = () => {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
+            height: '15vh'
         }}>
             <Toolbar sx={{}} disableGutters>
                 <ButtonRouter text='Home' href={'/'}/>

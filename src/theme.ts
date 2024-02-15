@@ -9,6 +9,15 @@ declare module '@mui/material/styles' {
       darkBlue: string;
       white: string;
   }
+
+  interface PaletteColor {
+      second?: string;
+  }
+
+  interface PaletteColorOptions {
+      main: string;
+      second?: string;
+  }
 }
 
 
@@ -20,6 +29,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#19857b',
+      second: '#00B7FC',
     },
     error: {
       main: red.A400,

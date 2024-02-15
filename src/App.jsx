@@ -12,31 +12,24 @@ export default function App() {
 
   return (
     <LifeStrategyContext.Provider value={{state, setState}}>
-      <Container maxWidth="xl" sx={{
+      {/* <Container maxWidth="xl" sx={{
         // backgroundColor: '#ddddee'
-      }}>
+      }}> */}
         <Container maxWidth="lg"
           sx={{
             minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            alignItems: 'stretch'
-
+            // alignItems: 'stretch'
             // backgroundColor: 'rgba(255, 255, 120, 0.6)',
             // backgroundColor: '#f5f5aa',
           }}>
-          {/* <Box sx={{ flexGrow: '1' }}> */}
             <Menu />
-          {/* </Box> */}
-          {/* <Box sx={{ flexGrow: '2' }}> */}
             <Content />
-          {/* </Box> */}
-          {/* <Box sx={{mb: 2, flexGrow: '1'}}> */}
             <Footer />
-          {/* </Box> */}
         </Container>
-      </Container>
+      {/* </Container> */}
     </LifeStrategyContext.Provider>
   );
 };
