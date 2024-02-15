@@ -51,13 +51,20 @@ const OptionBox = ({ option }: OptionProps) => {
   return (
     <Box
       sx={{
-        // display: 'flex',
+        display: 'flex',
+        alignItems: 'center',
+        // justifyContent: {lg: 'flex-start', md: 'center', sm: 'center', xs: 'center'},
         // flexDirection: 'column',
         backgroundColor: theme.palette.secondary.second,
-        width: {lg: '32%', md: '46%', sm: '100%', xs: '100%'},
+        width: {lg: '33%', md: '46%', sm: '90%', xs: '90%'},
+        p: 2
       }}
     >
-    <Typography variant='h5' align='center' color={theme.palette.text.white}>
+    <Typography 
+      variant='h6' 
+      align='left' 
+      color={theme.palette.text.white}
+    >
       {option}
     </Typography>
     </Box>
@@ -79,10 +86,12 @@ const Home = () => {
         <Box 
             sx={{ 
                 my: 0,
-                gap: 2,
+                // gap: 2,
                 flexDirection: { md: 'row', sm: 'column', xs: 'column'}, 
+                alignItems: {md: 'stretch', sm: 'center', xs: 'center'},
                 display: "flex", 
                 justifyContent: 'space-between', 
+
             }}
         >
             <OptionBox 
