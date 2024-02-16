@@ -1,7 +1,5 @@
 import React from 'react';
-import { Box, Stack, Typography, Card, List, ListItem, ListItemText, ListItemButton,
-    Accordion, AccordionSummary, AccordionDetails,
-} from '@mui/material';
+import { Box, Typography } from '@mui/material';  
 // import { styled } from '@mui/material/styles';
 // import lagoonnebula from '../../public/pics/lagoonnebula.jpeg';
 // import messier33 from '../../public/pics/messier33.jpeg';
@@ -36,7 +34,7 @@ const OptionBox = ({ option }: OptionProps) => {
             // alignItems: 'center',
             // justifyContent: {lg: 'flex-start', md: 'center', sm: 'center', xs: 'center'},
             // flexDirection: 'column',
-            height: '6em',
+            height: {lg: '6em', md: '5em', sm: '4em'},
             backgroundColor: theme.palette.secondary.second,
             p: 2,
           }}
@@ -45,17 +43,26 @@ const OptionBox = ({ option }: OptionProps) => {
             variant='h6'
             align='left' 
             color={theme.palette.text.white}
+            sx={{
+              fontSize: {lg: '1.3em', md: '1em', sm: '1em', xs: '0.95em'},
+            }}
           >
             {option}
           </Typography>
         </Box>
         <Box 
           sx={{
-            height: '80vh',
+            height: {lg: '20em', md: '14em'},
+            backgroundColor: theme.palette.primary.second,
             p: 2
           }}
           >
-          <Typography>
+          <Typography 
+            color={theme.palette.text.primary}
+            sx={{
+              fontSize: {lg: '1em', md: '0.87em', sm: '0.85em', xs: '0.8em'},
+            }}
+          >
             Lorem Ipsum es simplemente el 
             texto de relleno de las imprentas y 
             archivos de texto. Lorem Ipsum ha sido el 
@@ -76,19 +83,19 @@ const Home = () => {
     return (
       <Box
         sx={{
-          height: '70vh',
+          // height: '70vh',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-start', 
+          zIndex: 1,
         }}
       >
         <Box 
             sx={{ 
-                my: 0,
                 flexDirection: { md: 'row', sm: 'column', xs: 'column'}, 
                 alignItems: {md: 'stretch', sm: 'center', xs: 'center'},
                 display: "flex", 
-                justifyContent: 'space-between', 
+                justifyContent: 'center', 
+                alignSelf: 'flex-start'
             }}
         >
             <OptionBox 

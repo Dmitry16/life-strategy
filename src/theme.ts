@@ -12,11 +12,13 @@ declare module '@mui/material/styles' {
 
   interface PaletteColor {
       second?: string;
+      spot?: string;
   }
 
   interface PaletteColorOptions {
       main: string;
       second?: string;
+      spot?: string;
   }
 }
 
@@ -26,6 +28,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#556cd6',
+      second: '#AAAABC'
     },
     secondary: {
       main: '#19857b',

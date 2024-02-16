@@ -12,24 +12,28 @@ export default function App() {
 
   return (
     <LifeStrategyContext.Provider value={{state, setState}}>
-      {/* <Container maxWidth="xl" sx={{
-        // backgroundColor: '#ddddee'
-      }}> */}
-        <Container maxWidth="lg"
+        <Container maxWidth="lg" height="100vh"
           sx={{
-            // minHeight: '100vh',
+            minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            // alignItems: 'stretch'
+            // alignItems: 'flex-end'
             // backgroundColor: 'rgba(255, 255, 120, 0.6)',
             // backgroundColor: '#f5f5aa',
           }}>
-            <Menu />
-            <Content />
+            <Box
+              sx={{
+                // height: '60%',
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <Menu />
+              <Content />
+            </Box>
             <Footer />
         </Container>
-      {/* </Container> */}
     </LifeStrategyContext.Provider>
   );
 };
