@@ -2,10 +2,10 @@ import React from 'react';
 import { Box, Stack, Typography, Card, List, ListItem, ListItemText, ListItemButton,
     Accordion, AccordionSummary, AccordionDetails,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import lagoonnebula from '../../public/pics/lagoonnebula.jpeg';
-import messier33 from '../../public/pics/messier33.jpeg';
-import nebulaandplanets from '../../public/pics/nebulaandplanets.jpeg';
+// import { styled } from '@mui/material/styles';
+// import lagoonnebula from '../../public/pics/lagoonnebula.jpeg';
+// import messier33 from '../../public/pics/messier33.jpeg';
+// import nebulaandplanets from '../../public/pics/nebulaandplanets.jpeg';
 import theme from '../theme';
 
 
@@ -17,57 +17,56 @@ import theme from '../theme';
 
 interface OptionProps {
     option: string
-    // image: string;
 }
 
-// const OptionCard = ({ option }: OptionProps) => {
-//     return (
-//       <Card
-//         raised
-//         sx={{
-//             width: {lg: '32%', md: '46%', sm: '100%', xs: '100%'},
-//             height: '50vh',
-//             display: 'flex',
-//             justifyContent: 'center',
-//             alignItems: 'center',
-//         }}
-//         style={{
-//             backgroundImage: `url(${image})`,
-//             backgroundSize: 'cover',
-//             backgroundBlendMode: `difference`,
-//             // backgroundColor: theme.palette.text.darkBlue,
-//             opacity: 0.8,
-//         }}
-//       > 
-//         {/* <img src={image} alt={option} /> */}
-//         <Typography variant="h5" component="h1" color={theme.palette.text.darkGrey}>
-//             {option}
-//         </Typography>
-//       </Card>
-//     )
-// }
 
 const OptionBox = ({ option }: OptionProps) => {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        // justifyContent: {lg: 'flex-start', md: 'center', sm: 'center', xs: 'center'},
-        // flexDirection: 'column',
-        backgroundColor: theme.palette.secondary.second,
-        width: {lg: '33%', md: '46%', sm: '90%', xs: '90%'},
-        p: 2
-      }}
-    >
-    <Typography 
-      variant='h6' 
-      align='left' 
-      color={theme.palette.text.white}
-    >
-      {option}
-    </Typography>
-    </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          width: {lg: '33%', md: '46%', sm: '90%', xs: '90%'},
+        }}
+      >
+        <Box
+          sx={{
+            // display: 'flex',
+            // alignItems: 'center',
+            // justifyContent: {lg: 'flex-start', md: 'center', sm: 'center', xs: 'center'},
+            // flexDirection: 'column',
+            height: '6em',
+            backgroundColor: theme.palette.secondary.second,
+            p: 2,
+          }}
+        >
+          <Typography 
+            variant='h6'
+            align='left' 
+            color={theme.palette.text.white}
+          >
+            {option}
+          </Typography>
+        </Box>
+        <Box 
+          sx={{
+            height: '80vh',
+            p: 2
+          }}
+          >
+          <Typography>
+            Lorem Ipsum es simplemente el 
+            texto de relleno de las imprentas y 
+            archivos de texto. Lorem Ipsum ha sido el 
+            texto de relleno estándar de las industrias 
+            desde el año 1500, cuando un impresor 
+            (N. del T. persona que se dedica a la imprenta) 
+            desconocido usó una galería de textos y los mezcló de 
+            tal manera que logró hacer un libro de textos especimen.
+          </Typography>
+        </Box>
+      </Box>
   )
 }
 
@@ -77,7 +76,7 @@ const Home = () => {
     return (
       <Box
         sx={{
-          height: '75vh',
+          height: '70vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start', 
@@ -86,12 +85,10 @@ const Home = () => {
         <Box 
             sx={{ 
                 my: 0,
-                // gap: 2,
                 flexDirection: { md: 'row', sm: 'column', xs: 'column'}, 
                 alignItems: {md: 'stretch', sm: 'center', xs: 'center'},
                 display: "flex", 
                 justifyContent: 'space-between', 
-
             }}
         >
             <OptionBox 
@@ -103,21 +100,6 @@ const Home = () => {
             <OptionBox 
               option='Strategic Life: Applying Boardroom Thinking to Personal Success'
             />
-            {/* <OptionCard 
-              option='Design Your Desired Life'
-            //   image='./pics/lagoonnebula.jpg'
-              image={lagoonnebula}
-            />
-            <OptionCard 
-              option='Create Your Life Strategy'
-            //   image='./pics/messier33.jpg'
-              image={messier33}
-            />
-            <OptionCard 
-              option='Strategic Life: Applying Boardroom Thinking to Personal Success' 
-            //   image='./pics/nebulaandplanets.jpg'
-              image={nebulaandplanets}
-            /> */}
         </Box>
       </Box>
     );

@@ -6,8 +6,20 @@ import Copyright from './Copyright';
 
 const Footer = () => {
     return (
-        <Box sx={{ mb: 2, height: '15vh' }}>
-            <Copyright />
+        <Box sx={{ 
+            display: 'flex',
+            justifyContent: 'center',
+            mb: 2, 
+            height: '6em', 
+            position: 'sticky', 
+            bottom: 0, 
+            width: '100%' 
+        }}>
+            <Typography variant="body2" color="text.darkBlue" align="center">
+                {'Dmytro Davydov © '}
+                {new Date().getFullYear()}
+                {'.'}
+            </Typography>
         </Box>
     );
 }
