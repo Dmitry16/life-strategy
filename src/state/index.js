@@ -1,5 +1,6 @@
 export const initialState = {
     selectedArea: '50',
+    showAIRecommendation: false,
     '10': {
         significantOther: {
             checked: true,

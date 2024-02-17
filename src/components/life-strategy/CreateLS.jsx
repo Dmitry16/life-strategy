@@ -1,10 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { Box, Paper, Stack, Typography, Grid, Button } from '@mui/material';
 import StrategicAreas from './StrategicAreas';
 import Explanation from './Explanation';
 import Chart from './Chart';
 import useDialog from '../../hooks/useDialog';
 import StrategicAreasControl from './StrategicAreasControl';
+import AIRecommendation from './AIRecommendation';
+import { LifeStrategyContext } from '../../context';
 
 // 'This tool is designed to help you create your life strategy. You can use it to analyze your life and set goals for the future. You can also use it to track your progress and make adjustments to your strategy. To get started, click on the "Strategic Life Areas" tab and start adding your goals. You can also use the "Explanation" tab to learn more about the tool and how to use it. Good luck!'
 
@@ -20,11 +22,17 @@ const dialogContent = {
 };
 
 const CreateLS = React.memo(() => {
+    const { state, setState } = useContext(LifeStrategyContext);
+
     const [DialogComponent, openDialog] = useDialog(dialogContent);
 
     const openDialogCallback = useCallback(openDialog, []);
 
-    console.log('CreateLS:::');
+    useEffect(() => {
+        setState({ ...state, showAIRecommendation: false });
+    }, []);
+
+    // console.log('CreateLS:::');
 
     return (
         <Box sx={{ mx: 8 }}>
@@ -43,7 +51,10 @@ const CreateLS = React.memo(() => {
                 <Box sx={{ mt: 2 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
-                            <StrategicAreasControl />
+                            <Stack spacing={2}>
+                                {!state.showAIRecommendation && <StrategicAreasControl />}
+                                 <AIRecommendation />
+                            </Stack>
                         </Grid>
                         <Grid item xs={8}>
                             <Chart />
