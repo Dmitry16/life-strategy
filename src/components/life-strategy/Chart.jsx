@@ -45,14 +45,23 @@ const Chart = React.memo(() => {
     };
 
     const handleClick = e => {
-        // console.log('Chart::handleClick::e::', e);
-
         const area = Object.entries(state).find(([_, value]) => Object.keys(value).includes(e.name))[0];
-        setState({
+        const updatedState = {
             ...state,
+            [area]: {
+                ...state[area],
+                [e.name]: {
+                    ...state[area][e.name],
+                    checked: true,
+                },
+            },
             selectedArea: area,
+        };
+        Object.keys(state[area]).filter(key => key !== e.name).forEach(key => {
+            updatedState[area][key].checked = false;
         });
-        localStorage.setItem('state', JSON.stringify(state));
+        setState(updatedState);
+        localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
     return (
