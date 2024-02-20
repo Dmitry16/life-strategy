@@ -9,12 +9,12 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
 }));
 
-const AIRecommendation = () => {
+const AIConclusion = () => {
     const { state, setState } = useContext(LifeStrategyContext);
 
     const handleClick = () => {
         setState({ ...state,
-            showAIRecommendation: !state.showAIRecommendation,
+            showRecommendation: !state.showRecommendation,
         });
     };
 
@@ -28,13 +28,12 @@ const AIRecommendation = () => {
                     onClick={handleClick}
                 >
                     <Typography variant="h6" component="h2" color="text.darkBlue">
-                        AI Recommendation
+                        Recommendation to your life strategy
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <List dense>
-                        Here will be the AI recommendation
-                        {/* <StyledListItem>
+                        <StyledListItem>
                             <Stack spacing={0}>
                                 <ListItemText primary="Strong areas"/>
                             </Stack>
@@ -48,7 +47,7 @@ const AIRecommendation = () => {
                             <Stack spacing={0}>
                                 <ListItemText primary="Strategy"/>
                             </Stack>
-                        </StyledListItem> */}
+                        </StyledListItem>
                     </List>
                 </AccordionDetails>
             </Accordion>
@@ -56,4 +55,4 @@ const AIRecommendation = () => {
     );
 };
 
-export default AIRecommendation;
+export default AIConclusion;

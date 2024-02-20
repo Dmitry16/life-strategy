@@ -5,6 +5,7 @@ import Explanation from './Explanation';
 import Chart from './Chart';
 import useDialog from '../../hooks/useDialog';
 import StrategicAreasControl from './StrategicAreasControl';
+import Recommendation from './Recommendation';
 import AIRecommendation from './AIRecommendation';
 import { LifeStrategyContext } from '../../context';
 
@@ -52,8 +53,9 @@ const CreateLS = React.memo(() => {
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
                             <Stack spacing={2}>
-                                {!state.showAIRecommendation && <StrategicAreasControl />}
-                                 <AIRecommendation />
+                                {!state.showAIRecommendation && !state.showRecommendation && <StrategicAreasControl />}
+                                <Recommendation />
+                                <AIRecommendation />
                             </Stack>
                         </Grid>
                         <Grid item xs={8}>
