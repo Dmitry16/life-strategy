@@ -1,13 +1,9 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';  
-// import { styled } from '@mui/material/styles';
-// import lagoonnebula from '../../public/pics/lagoonnebula.jpeg';
-// import messier33 from '../../public/pics/messier33.jpeg';
-// import nebulaandplanets from '../../public/pics/nebulaandplanets.jpeg';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, ImageList, ImageListItem, ImageListItemBar, Paper, Typography } from '@mui/material';  
+import constructionWorker from '../../public/pics/constructionWorker.jpg';
+import meeting2 from '../../public/pics/meeting2.jpg';
+import girlOnTheBed from '../../public/pics/girlOnTheBed.jpg';
 import theme from '../theme';
-
-
-
 
 // const StyledListItem = styled(ListItem)(({ theme }) => ({
 //     color: theme.palette.text.darkBlue,
@@ -15,66 +11,71 @@ import theme from '../theme';
 
 interface OptionProps {
     option: string
+    picture: string
 }
 
+const imageData: OptionProps[] = [
+  {
+    option: 'Design Your Desired Life',
+    picture: constructionWorker,
+  },
+  {
+    option: 'Create Your Life Strategy',
+    picture: meeting2,
+  },
+  {
+    option: 'Strategic Life: Applying Boardroom Thinking to Personal Success',
+    picture: girlOnTheBed,
+  }
+]
 
-const OptionBox = ({ option }: OptionProps) => {
+
+const OptionCard = ({ option, picture }: OptionProps) => {
   return (
+    <Card 
+      raised 
+      sx={{ 
+        maxWidth: {lg: 350, md: 310 },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }} 
+    >
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
-          width: {lg: '33%', md: '46%', sm: '90%', xs: '90%'},
+          justifyContent: 'flex-start',
         }}
       >
-        <Box
-          sx={{
-            // display: 'flex',
-            // alignItems: 'center',
-            // justifyContent: {lg: 'flex-start', md: 'center', sm: 'center', xs: 'center'},
-            // flexDirection: 'column',
-            height: {lg: '6em', md: '5em', sm: '4em'},
-            backgroundColor: theme.palette.secondary.second,
-            p: 2,
+        <CardMedia
+          sx={{ 
+            height: 180,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
-        >
-          <Typography 
-            variant='h6'
-            align='left' 
-            color={theme.palette.text.white}
-            sx={{
-              fontSize: {lg: '1.3em', md: '1em', sm: '1em', xs: '0.95em'},
-            }}
-          >
+          image={picture}
+          title={option}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
             {option}
           </Typography>
-        </Box>
-        <Box 
-          sx={{
-            height: {lg: '20em', md: '14em'},
-            backgroundColor: theme.palette.primary.second,
-            p: 2
-          }}
-          >
-          <Typography 
-            color={theme.palette.text.primary}
-            sx={{
-              fontSize: {lg: '1em', md: '0.87em', sm: '0.85em', xs: '0.8em'},
-            }}
-          >
-            Lorem Ipsum es simplemente el 
-            texto de relleno de las imprentas y 
-            archivos de texto. Lorem Ipsum ha sido el 
-            texto de relleno estándar de las industrias 
-            desde el año 1500, cuando un impresor 
-            (N. del T. persona que se dedica a la imprenta) 
-            desconocido usó una galería de textos y los mezcló de 
-            tal manera que logró hacer un libro de textos especimen.
+          <Typography variant="body2" color="text.secondary">
+            Al contrario del pensamiento popular, el texto de 
+            Lorem Ipsum no es simplemente texto aleatorio. 
+            Tiene sus raices en una pieza clasica de la literatura 
+            del Latin, que data del año 45 antes de Cristo, 
+            haciendo que este adquiera mas de 2000 años de antiguedad.
           </Typography>
-        </Box>
+        </CardContent>
       </Box>
+      <CardActions sx={{ pb: 2 }}>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
   )
+     
 }
 
 const Home = () => {
@@ -83,31 +84,23 @@ const Home = () => {
     return (
       <Box
         sx={{
-          // height: '70vh',
+          gap: 2,
           display: 'flex',
-          flexDirection: 'column',
+          justifyContent: 'space-between',
+          flexDirection: { lg: 'row', md: 'row', sm: 'column', xs: 'column' },
           zIndex: 1,
+          width: 'auto'
         }}
       >
-        <Box 
-            sx={{ 
-                flexDirection: { md: 'row', sm: 'column', xs: 'column'}, 
-                alignItems: {md: 'stretch', sm: 'center', xs: 'center'},
-                display: "flex", 
-                justifyContent: 'center', 
-                alignSelf: 'flex-start'
-            }}
-        >
-            <OptionBox 
-              option='Design Your Desired Life'
+        {
+          imageData.map((item) => (
+            <OptionCard 
+              key={item.option}
+              option={item.option}
+              picture={item.picture}
             />
-            <OptionBox 
-              option='Create Your Life Strategy'
-            />
-            <OptionBox 
-              option='Strategic Life: Applying Boardroom Thinking to Personal Success'
-            />
-        </Box>
+          ))
+        }
       </Box>
     );
 };
