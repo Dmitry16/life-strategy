@@ -14,8 +14,8 @@ import {
 } from 'recharts';
 import { LifeStrategyContext } from '../../context';
 
-const Chart = () => {
-    const { state } = useContext(LifeStrategyContext);
+const Chart = React.memo(() => {
+    const { state, setState } = useContext(LifeStrategyContext);
     
     const chartData = Object.entries(state).map(([_, value]) => {
         return Object.entries(value).map(([key, value]) => {
@@ -28,7 +28,7 @@ const Chart = () => {
         });
     }).flat();
 
-    // console.log('Chart::state:chartData::', chartData);
+    // console.log('Chart::chartData:::', chartData);
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -42,6 +42,26 @@ const Chart = () => {
           );
         }
         return null;
+    };
+
+    const handleClick = e => {
+        const area = Object.entries(state).find(([_, value]) => Object.keys(value).includes(e.name))[0];
+        const updatedState = {
+            ...state,
+            [area]: {
+                ...state[area],
+                [e.name]: {
+                    ...state[area][e.name],
+                    checked: true,
+                },
+            },
+            selectedArea: area,
+        };
+        Object.keys(state[area]).filter(key => key !== e.name).forEach(key => {
+            updatedState[area][key].checked = false;
+        });
+        setState(updatedState);
+        localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
     return (
@@ -64,12 +84,12 @@ const Chart = () => {
             <ZAxis type="number" dataKey="timeSpent" range={[0, 900]} name="time spent" unit="" />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />}/>
             {/* <Legend /> */}
-            <Scatter name="Life Unit" data={chartData} fill="#8884d8">
+            <Scatter name="Life Unit" data={chartData} fill="#8884d8" onClick={handleClick}>
                 {/* <LabelList position="top" dataKey="name" /> */}
             </Scatter>
           </ScatterChart>
         </ResponsiveContainer>
     );
-};
+});
 
 export default Chart;

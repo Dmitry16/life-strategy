@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
+console.warn = console.error = () => {};
 
 root.render(
   <React.StrictMode>

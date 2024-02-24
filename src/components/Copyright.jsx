@@ -5,7 +5,7 @@ import Link from '@mui/material/Link';
 export default function Copyright() {
   return (
     <Typography variant="body2" color="text.darkBlue" align="center">
-      {'Dmytro Davydov © '}
+      {'DoubleD_Tech © '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
