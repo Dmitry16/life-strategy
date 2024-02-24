@@ -5,11 +5,14 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
 import { LifeStrategyContext } from '../../context';
 
-const StyledListItem = styled(ListItem)(({ theme }) => ({
+const StyledListItemText = styled(ListItemText)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
+    '.MuiTypography-root': {
+        fontSize: '1rem',
+    },
 }));
 
-const AIConclusion = () => {
+const Recommendation = () => {
     const { state, setState } = useContext(LifeStrategyContext);
 
     const handleClick = () => {
@@ -33,21 +36,29 @@ const AIConclusion = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                     <List dense>
-                        <StyledListItem>
+                        <Typography variant="body1" component="h1" color="text.darkBlue">
+                            The main idea is to have all the life areas in balance. So the basic strategy is to improve the weak, maintain or improove the neutral and levarage the strong areas.
+                        </Typography>
+                        <ListItem>
                             <Stack spacing={0}>
-                                <ListItemText primary="Strong areas"/>
+                                <StyledListItemText primary="Weak areas:"/>
                             </Stack>
-                        </StyledListItem>
-                        <StyledListItem>
+                        </ListItem>
+                        <ListItem>
                             <Stack spacing={0}>
-                                <ListItemText primary="Weak areas"/>
+                                <StyledListItemText primary="Neutral areas:"/>
                             </Stack>
-                        </StyledListItem>
-                        <StyledListItem>
+                        </ListItem>
+                        <ListItem>
                             <Stack spacing={0}>
-                                <ListItemText primary="Strategy"/>
+                                <StyledListItemText primary="Strong areas:"/>
                             </Stack>
-                        </StyledListItem>
+                        </ListItem>
+                        <ListItem>
+                            <Stack spacing={0}>
+                                <StyledListItemText primary="Strategy:"/>
+                            </Stack>
+                        </ListItem>
                     </List>
                 </AccordionDetails>
             </Accordion>
@@ -55,4 +66,4 @@ const AIConclusion = () => {
     );
 };
 
-export default AIConclusion;
+export default Recommendation;
