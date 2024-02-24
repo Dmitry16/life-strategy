@@ -12,6 +12,11 @@ const StyledListItemText = styled(ListItemText)(({ theme }) => ({
     },
 }));
 
+const recommendationText = `The main idea is to have all your life areas strong and balanced. To achieve that,
+    you need to get all the life units more or less at the same level and as strong as possible.
+    So the basic strategy is to improve the weak units, maintain or improve the neutral, maintain the strong units or 
+    levarage them to improve the weak or neutral ones.`;
+
 const Recommendation = () => {
     const { state, setState } = useContext(LifeStrategyContext);
 
@@ -20,6 +25,9 @@ const Recommendation = () => {
             showRecommendation: !state.showRecommendation,
         });
     };
+
+    // const getStrongAreas = () => {
+    //     return 
 
     return (
         <Box sx={{}}>
@@ -34,10 +42,10 @@ const Recommendation = () => {
                         Recommendation to your life strategy
                     </Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails sx={{mt: 0, pt: 0}}>
                     <List dense>
                         <Typography variant="body1" component="h1" color="text.darkBlue">
-                            The main idea is to have all the life areas in balance. So the basic strategy is to improve the weak, maintain or improove the neutral and levarage the strong areas.
+                            The current state of your life areas/units is the following:
                         </Typography>
                         <ListItem>
                             <Stack spacing={0}>
@@ -57,6 +65,9 @@ const Recommendation = () => {
                         <ListItem>
                             <Stack spacing={0}>
                                 <StyledListItemText primary="Strategy:"/>
+                                <Typography sx={{pl: 1, fontSize: 14}} variant="body1" component="h1" color="text.darkBlue">
+                                    {recommendationText}
+                                </Typography>
                             </Stack>
                         </ListItem>
                     </List>

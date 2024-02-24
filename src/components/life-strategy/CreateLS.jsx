@@ -33,56 +33,14 @@ const CreateLS = React.memo(() => {
         setState({ ...state, showAIRecommendation: false });
     }, []);
 
-    const LIFE_UNIT_STATUS = {
-        STRONG: 'strong',
-        NEUTRAL: 'neutral',
-        WEAK: 'weak',
-    };
+    // useEffect(() => {
+    //     const updatedState = calculateAndAddStatusToLifeUnit();
+    //     setState(updatedState);
 
-    const calculateAndAddStatusToLifeUnit = () => {
-        const updatedState = {...state};
+    //     console.log('CreateLS::useEffect::state::1:', state);
+    // }, []);
 
-        Object.entries(updatedState).forEach(([key, value]) => {
-            if (key === 'showRecommendation' || key === 'showAIRecommendation' || key === 'selectedArea') return;
-
-            Object.entries(value).forEach(([unit, { importance, satisfaction }]) => {
-                if (importance/satisfaction === 1 || (importance/satisfaction > 1 && importance/satisfaction <= 1.25)) {
-                        updatedState[key] = {
-                            ...updatedState[key],
-                            [unit]: {
-                                ...updatedState[key][unit],
-                                status: LIFE_UNIT_STATUS.STRONG,
-                            },
-                        };
-                } else if (importance/satisfaction > 1.25 && importance/satisfaction <= 1.5) {
-                    updatedState[key] = {
-                        ...updatedState[key],
-                        [unit]: {
-                            ...updatedState[key][unit],
-                            status: LIFE_UNIT_STATUS.NEUTRAL,
-                        },
-                    };
-                } else {
-                    updatedState[key] = {
-                        ...updatedState[key],
-                        [unit]: {
-                            ...updatedState[key][unit],
-                            status: LIFE_UNIT_STATUS.WEAK,
-                        },
-                    };
-                }
-            });
-        });
-
-        return updatedState;
-    };
-
-    useEffect(() => {
-        const updatedState = calculateAndAddStatusToLifeUnit();
-        setState(updatedState);
-    }, []);
-
-    console.log('CreateLS::state:::', state);
+    console.log('CreateLS::state::2:', state);
 
     return (
         <Box sx={{ mx: 8 }}>

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Box, Stack, Typography, Grid, Tabs, Tab, Slider } from '@mui/material';
 import { LifeStrategyContext } from '../../context';
+import { calculateAndAddStatusToLifeUnit } from '../../utils/status';
 
 const Metrics = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
@@ -24,6 +25,7 @@ const Metrics = ({ area }) => {
         setSliderValue(getSliderValue(selectedUnits(area), selectedTab));
     }, [selectedTab, area, state]);
 
+
     const mapSliderValueToSelectedUnits = (selectedUnits, value) => {
         return selectedUnits.reduce((acc, key) => {
             return {
@@ -37,13 +39,18 @@ const Metrics = ({ area }) => {
     };
 
     const handleSliderChange = (event, newValue) => {
-        const updatedState = {
+        const stateWithSliderValue = {
             ...state,
             [area]: {
                 ...state[area],
                 ...mapSliderValueToSelectedUnits(selectedUnits(area), newValue),
             },
         };
+
+        const updatedState = calculateAndAddStatusToLifeUnit(stateWithSliderValue);
+
+        // console.log('Metrics::handleSliderChange::updatedState:::', updatedState);
+
         setSliderValue(newValue);
         setState(updatedState);
         localStorage.setItem('state', JSON.stringify(updatedState));
