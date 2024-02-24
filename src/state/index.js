@@ -4,18 +4,21 @@ export const initialState = {
     showAIRecommendation: false,
     '10': {
         significantOther: {
+            status: null,
             checked: true,
             satisfaction: 20,
             importance: 60,
             timeSpent: 10,
         },
         family: {
+            status: null,
             checked: false,
             satisfaction: 30,
             importance: 80,
             timeSpent: 10,
         },
         friendship: {
+            status: null,
             checked: false,
             satisfaction: 30,
             importance: 30,
@@ -24,18 +27,21 @@ export const initialState = {
     },
     '20': {
         phisicalHealth: {
+            status: null,
             checked: true,
             satisfaction: 80,
             importance: 100,
             timeSpent: 10,
         },
         mentalHealth: {
+            status: null,
             checked: false,
             satisfaction: 70,
             importance: 90,
             timeSpent: 10,
         },
         spirit: {
+            status: null,
             checked: false,
             satisfaction: 50,
             importance: 50,
@@ -44,12 +50,14 @@ export const initialState = {
     },
     '30': {
         community: {
+            status: null,
             checked: true,
             satisfaction: 30,
             importance: 50,
             timeSpent: 10,
         },
         socialLife: {
+            status: null,
             checked: false,
             satisfaction: 20,
             importance: 30,
@@ -58,18 +66,21 @@ export const initialState = {
     },
     '40': {
         job: {
+            status: null,
             checked: false,
             satisfaction: 70,
             importance: 90,
             timeSpent: 60,
         },
         learning: {
+            status: null,
             checked: false,
             satisfaction: 80,
             importance: 80,
             timeSpent: 10,
         },
         finances: {
+            status: null,
             checked: true,
             satisfaction: 60,
             importance: 90,
@@ -78,18 +89,21 @@ export const initialState = {
     },
     '50': {
         interests: {
+            status: null,
             checked: true,
             satisfaction: 70,
             importance: 80,
             timeSpent: 10,
         },
         hobbies: {
+            status: null,
             checked: false,
             satisfaction: 50,
             importance: 60,
             timeSpent: 20,
         },
         fun: {
+            status: null,
             checked: false,
             satisfaction: 40,
             importance: 70,
@@ -98,12 +112,14 @@ export const initialState = {
     },
     '60': {
         physNeeds: {
+            status: null,
             checked: true,
             satisfaction: 90,
             importance: 90,
             timeSpent: 40,
         },
         dailyActivities: {
+            status: null,
             checked: false,
             satisfaction: 80,
             importance: 80,
