@@ -33,7 +33,14 @@ const CreateLS = React.memo(() => {
         setState({ ...state, showAIRecommendation: false });
     }, []);
 
-    // console.log('CreateLS:::');
+    // useEffect(() => {
+    //     const updatedState = calculateAndAddStatusToLifeUnit();
+    //     setState(updatedState);
+
+    //     console.log('CreateLS::useEffect::state::1:', state);
+    // }, []);
+
+    console.log('CreateLS::state::2:', state);
 
     return (
         <Box sx={{ mx: 8 }}>

@@ -5,11 +5,19 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
 import { LifeStrategyContext } from '../../context';
 
-const StyledListItem = styled(ListItem)(({ theme }) => ({
+const StyledListItemText = styled(ListItemText)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
+    '.MuiTypography-root': {
+        fontSize: '1rem',
+    },
 }));
 
-const AIConclusion = () => {
+const recommendationText = `The main idea is to have all your life areas strong and balanced. To achieve that,
+    you need to get all the life units more or less at the same level and as strong as possible.
+    So the basic strategy is to improve the weak units, maintain or improve the neutral, maintain the strong units or 
+    levarage them to improve the weak or neutral ones.`;
+
+const Recommendation = () => {
     const { state, setState } = useContext(LifeStrategyContext);
 
     const handleClick = () => {
@@ -17,6 +25,9 @@ const AIConclusion = () => {
             showRecommendation: !state.showRecommendation,
         });
     };
+
+    // const getStrongAreas = () => {
+    //     return 
 
     return (
         <Box sx={{}}>
@@ -31,23 +42,34 @@ const AIConclusion = () => {
                         Recommendation to your life strategy
                     </Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails sx={{mt: 0, pt: 0}}>
                     <List dense>
-                        <StyledListItem>
+                        <Typography variant="body1" component="h1" color="text.darkBlue">
+                            The current state of your life areas/units is the following:
+                        </Typography>
+                        <ListItem>
                             <Stack spacing={0}>
-                                <ListItemText primary="Strong areas"/>
+                                <StyledListItemText primary="Weak areas:"/>
                             </Stack>
-                        </StyledListItem>
-                        <StyledListItem>
+                        </ListItem>
+                        <ListItem>
                             <Stack spacing={0}>
-                                <ListItemText primary="Weak areas"/>
+                                <StyledListItemText primary="Neutral areas:"/>
                             </Stack>
-                        </StyledListItem>
-                        <StyledListItem>
+                        </ListItem>
+                        <ListItem>
                             <Stack spacing={0}>
-                                <ListItemText primary="Strategy"/>
+                                <StyledListItemText primary="Strong areas:"/>
                             </Stack>
-                        </StyledListItem>
+                        </ListItem>
+                        <ListItem>
+                            <Stack spacing={0}>
+                                <StyledListItemText primary="Strategy:"/>
+                                <Typography sx={{pl: 1, fontSize: 14}} variant="body1" component="h1" color="text.darkBlue">
+                                    {recommendationText}
+                                </Typography>
+                            </Stack>
+                        </ListItem>
                     </List>
                 </AccordionDetails>
             </Accordion>
@@ -55,4 +77,4 @@ const AIConclusion = () => {
     );
 };
 
-export default AIConclusion;
+export default Recommendation;
