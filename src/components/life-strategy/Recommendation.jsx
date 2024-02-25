@@ -44,32 +44,52 @@ const Recommendation = () => {
                 </AccordionSummary>
                 <AccordionDetails sx={{mt: 0, pt: 0}}>
                     <List dense>
-                        <Typography variant="body1" component="h1" color="text.darkBlue">
-                            The current state of your life areas/units is the following:
-                        </Typography>
-                        <ListItem>
-                            <Stack spacing={0}>
-                                <StyledListItemText primary="Weak areas:"/>
-                            </Stack>
-                        </ListItem>
-                        <ListItem>
-                            <Stack spacing={0}>
-                                <StyledListItemText primary="Neutral areas:"/>
-                            </Stack>
-                        </ListItem>
-                        <ListItem>
-                            <Stack spacing={0}>
-                                <StyledListItemText primary="Strong areas:"/>
-                            </Stack>
-                        </ListItem>
-                        <ListItem>
-                            <Stack spacing={0}>
-                                <StyledListItemText primary="Recommended strategy:"/>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ArrowDropDownIcon />}
+                                aria-controls="panel-content"
+                                id="panel-header"
+                                // onClick={handleClick}
+                            >
+                                <Typography variant="body1" component="h1" color="text.darkBlue">
+                                    The current state of your life areas and area units
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails sx={{mt: 0, pt: 0}}>
+                                <ListItem>
+                                    <Stack spacing={0}>
+                                        <StyledListItemText primary="Weak areas:"/>
+                                    </Stack>
+                                </ListItem>
+                                <ListItem>
+                                    <Stack spacing={0}>
+                                        <StyledListItemText primary="Neutral areas:"/>
+                                    </Stack>
+                                </ListItem>
+                                <ListItem>
+                                    <Stack spacing={0}>
+                                        <StyledListItemText primary="Strong areas:"/>
+                                    </Stack>
+                                </ListItem>
+                            </AccordionDetails>
+                        </Accordion>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ArrowDropDownIcon />}
+                                aria-controls="panel-content"
+                                id="panel-header"
+                                // onClick={handleClick}
+                            >
+                                <Typography variant="body1" component="h1" color="text.darkBlue">
+                                    Actions you could take to improve your life strategy
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails sx={{mt: 0, pt: 0}}>
                                 <Typography sx={{pl: 1, fontSize: 14}} variant="body1" component="h1" color="text.darkBlue">
                                     {recommendationText}
                                 </Typography>
-                            </Stack>
-                        </ListItem>
+                            </AccordionDetails>
+                        </Accordion>
                     </List>
                 </AccordionDetails>
             </Accordion>
