@@ -38,6 +38,53 @@ const Metrics = ({ area }) => {
         }, {});
     };
 
+    const mapUnitStatusToNumber = (unitStatus) => {
+        switch (unitStatus) {
+            case 'weak':
+                return 1;
+            case 'neutral':
+                return 2;
+            case 'strong':
+                return 3;
+            default:
+                return 0;
+        }
+    };
+
+    const calculateAreaStatus = (area) => {
+        const units = Object.entries(area).filter(([key, value]) => key !== 'name').map(([key, value]) => value);
+
+        const unitsStatus = units.map(unit => unit.status);
+        const unitsStatusNumbers = unitsStatus.map(unitStatus => mapUnitStatusToNumber(unitStatus));
+        const sum = unitsStatusNumbers.reduce((acc, cur) => acc + cur, 0);
+        const average = sum / unitsStatusNumbers.length;
+        if (average < 2) {
+            return 'weak';
+        } else if (average === 2) {
+            return 'neutral';
+        } else {
+            return 'strong';
+        }
+    };
+
+    // console.log('Metrics::calculateAreaStatus:::', calculateAreaStatus(state[area]));
+
+    const mapAreaStatusToAreasData = (state, area) => {
+        const updatedState = {...state};
+        const areaStatus = calculateAreaStatus(state[area]);
+
+        updatedState.areasData = {
+            ...updatedState.areasData,
+            [area]: {
+                ...updatedState.areasData[area],
+                status: areaStatus,
+            },
+        };
+        return updatedState;
+    };
+
+    // console.log('Metrics::mapAreaStatusToAreasData:::', mapAreaStatusToAreasData(state, area));
+
     const handleSliderChange = (event, newValue) => {
         const stateWithSliderValue = {
             ...state,
@@ -49,11 +96,13 @@ const Metrics = ({ area }) => {
 
         const updatedState = calculateAndAddStatusToLifeUnit(stateWithSliderValue);
 
+        const updatedStateWithAreaStatus = mapAreaStatusToAreasData(updatedState, area);
+
         // console.log('Metrics::handleSliderChange::updatedState:::', updatedState);
 
         setSliderValue(newValue);
-        setState(updatedState);
-        localStorage.setItem('state', JSON.stringify(updatedState));
+        setState(updatedStateWithAreaStatus);
+        localStorage.setItem('state', JSON.stringify(updatedStateWithAreaStatus));
     };
 
 

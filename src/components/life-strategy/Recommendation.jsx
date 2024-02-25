@@ -26,8 +26,54 @@ const Recommendation = () => {
         });
     };
 
-    // const getStrongAreas = () => {
-    //     return 
+    // const mapUnitStatusToNumber = (unitStatus) => {
+    //     switch (unitStatus) {
+    //         case 'weak':
+    //             return 1;
+    //         case 'neutral':
+    //             return 2;
+    //         case 'strong':
+    //             return 3;
+    //         default:
+    //             return 0;
+    //     }
+    // };
+
+    // const calculateAreaStatus = (area) => {
+    //     const units = Object.entries(area).filter(([key, value]) => key !== 'name').map(([key, value]) => value);
+
+    //     const unitsStatus = units.map(unit => unit.status);
+    //     const unitsStatusNumbers = unitsStatus.map(unitStatus => mapUnitStatusToNumber(unitStatus));
+    //     const sum = unitsStatusNumbers.reduce((acc, cur) => acc + cur, 0);
+    //     const average = sum / unitsStatusNumbers.length;
+    //     if (average < 2) {
+    //         return 'weak';
+    //     } else if (average === 2) {
+    //         return 'neutral';
+    //     } else {
+    //         return 'strong';
+    //     }
+    // };
+
+    const displayWeakAreas = () => {
+        const areas = Object.entries(state)
+            .filter(([key, value]) => key !== 'showRecommendation' && key !== 'showAIRecommendation')
+            .map(([key, value]) => value);
+        // const weakAreas = areas.filter(area => calculateAreaStatus(area) === 'weak');
+        // return (
+        //     <List dense>
+        //         {weakAreas.map(weakArea => (
+        //             <ListItem key={weakArea.id}>
+        //                 <Stack spacing={0}>
+        //                     <ListItemText primary={weakArea.name}/>
+        //                 </Stack>
+        //             </ListItem>
+        //         ))}
+        //     </List>
+        // );
+    };
+
+    // console.log('Recommendation:::displayWeakAreas:::', displayWeakAreas());
 
     return (
         <Box sx={{}}>
@@ -59,6 +105,7 @@ const Recommendation = () => {
                                 <ListItem>
                                     <Stack spacing={0}>
                                         <StyledListItemText primary="Weak areas:"/>
+                                        {/* {displayWeakAreas()} */}
                                     </Stack>
                                 </ListItem>
                                 <ListItem>
