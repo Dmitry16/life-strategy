@@ -64,7 +64,7 @@ const Recommendation = () => {
                         </ListItem>
                         <ListItem>
                             <Stack spacing={0}>
-                                <StyledListItemText primary="Strategy:"/>
+                                <StyledListItemText primary="Recommended strategy:"/>
                                 <Typography sx={{pl: 1, fontSize: 14}} variant="body1" component="h1" color="text.darkBlue">
                                     {recommendationText}
                                 </Typography>
