@@ -75,7 +75,7 @@ const Chart = React.memo(() => {
             updatedState[area][key].checked = false;
         });
         setState(updatedState);
-        localStorage.setItem('state', JSON.stringify(updatedState));
+        // localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
     return (

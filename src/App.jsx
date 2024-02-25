@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Content from './components/Content';
@@ -9,6 +9,15 @@ import { initialState } from './state';
 
 export default function App() {
   const [state, setState] = useState(initialState);
+
+  useEffect(() => {
+    const localState = JSON.parse(localStorage.getItem('state'));
+    if (localState) {
+      console.log('Recommendation localState:', localState);
+      
+      setState(localState);
+    }
+  }, []);
 
   return (
     <LifeStrategyContext.Provider value={{state, setState}}>

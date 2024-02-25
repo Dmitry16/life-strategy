@@ -15,9 +15,9 @@ const StrategicAreasControl = React.memo(() => {
         }
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem('state', JSON.stringify(state));
-    }, [state.selectedArea]);
+    // useEffect(() => {
+    //     localStorage.setItem('state', JSON.stringify(state));
+    // }, [state.selectedArea]);
 
     const handleChange = ({ target: { value }}) => {
         setState({

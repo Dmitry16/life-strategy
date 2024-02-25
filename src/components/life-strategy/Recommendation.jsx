@@ -26,54 +26,53 @@ const Recommendation = () => {
         });
     };
 
-    // const mapUnitStatusToNumber = (unitStatus) => {
-    //     switch (unitStatus) {
-    //         case 'weak':
-    //             return 1;
-    //         case 'neutral':
-    //             return 2;
-    //         case 'strong':
-    //             return 3;
-    //         default:
-    //             return 0;
-    //     }
-    // };
-
-    // const calculateAreaStatus = (area) => {
-    //     const units = Object.entries(area).filter(([key, value]) => key !== 'name').map(([key, value]) => value);
-
-    //     const unitsStatus = units.map(unit => unit.status);
-    //     const unitsStatusNumbers = unitsStatus.map(unitStatus => mapUnitStatusToNumber(unitStatus));
-    //     const sum = unitsStatusNumbers.reduce((acc, cur) => acc + cur, 0);
-    //     const average = sum / unitsStatusNumbers.length;
-    //     if (average < 2) {
-    //         return 'weak';
-    //     } else if (average === 2) {
-    //         return 'neutral';
-    //     } else {
-    //         return 'strong';
-    //     }
-    // };
-
     const displayWeakAreas = () => {
-        const areas = Object.entries(state)
-            .filter(([key, value]) => key !== 'showRecommendation' && key !== 'showAIRecommendation')
-            .map(([key, value]) => value);
-        // const weakAreas = areas.filter(area => calculateAreaStatus(area) === 'weak');
-        // return (
-        //     <List dense>
-        //         {weakAreas.map(weakArea => (
-        //             <ListItem key={weakArea.id}>
-        //                 <Stack spacing={0}>
-        //                     <ListItemText primary={weakArea.name}/>
-        //                 </Stack>
-        //             </ListItem>
-        //         ))}
-        //     </List>
-        // );
+        const areas = Object.values(state.areasData);
+        
+        const weakAreas = areas.filter(area => area.status === 'weak');
+
+        return weakAreas.map(area => {
+            return (
+                <ListItem key={area}>
+                    <Stack spacing={0}>
+                        <ListItemText primary={area.name}/>
+                    </Stack>
+                </ListItem>
+            );
+        });
     };
 
-    // console.log('Recommendation:::displayWeakAreas:::', displayWeakAreas());
+    const displayNeutralAreas = () => {
+        const areas = Object.values(state.areasData);
+        
+        const neutralAreas = areas.filter(area => area.status === 'neutral');
+
+        return neutralAreas.map(area => {
+            return (
+                <ListItem key={area}>
+                    <Stack spacing={0}>
+                        <ListItemText primary={area.name}/>
+                    </Stack>
+                </ListItem>
+            );
+        });
+    };
+
+    const displayStrongAreas = () => {
+        const areas = Object.values(state.areasData);
+        
+        const strongAreas = areas.filter(area => area.status === 'strong');
+
+        return strongAreas.map(area => {
+            return (
+                <ListItem key={area}>
+                    <Stack spacing={0}>
+                        <ListItemText primary={area.name}/>
+                    </Stack>
+                </ListItem>
+            );
+        });
+    };
 
     return (
         <Box sx={{}}>
@@ -105,17 +104,19 @@ const Recommendation = () => {
                                 <ListItem>
                                     <Stack spacing={0}>
                                         <StyledListItemText primary="Weak areas:"/>
-                                        {/* {displayWeakAreas()} */}
+                                        {...displayWeakAreas()}
                                     </Stack>
                                 </ListItem>
                                 <ListItem>
                                     <Stack spacing={0}>
                                         <StyledListItemText primary="Neutral areas:"/>
+                                        {...displayNeutralAreas()}
                                     </Stack>
                                 </ListItem>
                                 <ListItem>
                                     <Stack spacing={0}>
                                         <StyledListItemText primary="Strong areas:"/>
+                                        {...displayStrongAreas()}
                                     </Stack>
                                 </ListItem>
                             </AccordionDetails>

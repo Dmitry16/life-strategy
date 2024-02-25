@@ -4,9 +4,7 @@ import { LifeStrategyContext } from '../../context';
 
 const LifeAreaUnits = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
-    // console.log('LifeAreaUnits::area:::', area);
 
-    // reading state from local storage
     useEffect(() => {
         const localState = JSON.parse(localStorage.getItem('state'));
         if (localState) {

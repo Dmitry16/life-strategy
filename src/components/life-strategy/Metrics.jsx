@@ -67,7 +67,7 @@ const Metrics = ({ area }) => {
         }
     };
 
-    // console.log('Metrics::calculateAreaStatus:::', calculateAreaStatus(state[area]));
+    console.log('Metrics::calculateAreaStatus:::', calculateAreaStatus(state[area]));
 
     const mapAreaStatusToAreasData = (state, area) => {
         const updatedState = {...state};
@@ -83,7 +83,7 @@ const Metrics = ({ area }) => {
         return updatedState;
     };
 
-    // console.log('Metrics::mapAreaStatusToAreasData:::', mapAreaStatusToAreasData(state, area));
+    console.log('Metrics::mapAreaStatusToAreasData:::', mapAreaStatusToAreasData(state, area));
 
     const handleSliderChange = (event, newValue) => {
         const stateWithSliderValue = {
@@ -100,9 +100,9 @@ const Metrics = ({ area }) => {
 
         // console.log('Metrics::handleSliderChange::updatedState:::', updatedState);
 
+        localStorage.setItem('state', JSON.stringify(updatedStateWithAreaStatus));
         setSliderValue(newValue);
         setState(updatedStateWithAreaStatus);
-        localStorage.setItem('state', JSON.stringify(updatedStateWithAreaStatus));
     };
 
 
