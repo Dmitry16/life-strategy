@@ -21,9 +21,7 @@ const Footer = () => {
             height: '5em' 
         }}>
             <Typography variant="body2" color="text.darkBlue" align="center">
-                {'Dmytro Davydov © '}
-                {new Date().getFullYear()}
-                {'.'}
+                Reptile Technologies © {new Date().getFullYear()}.
             </Typography>
         </Box>
     );

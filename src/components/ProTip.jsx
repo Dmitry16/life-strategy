@@ -18,6 +18,20 @@ export default function ProTip() {
       {'Pro tip: See more '}
       <Link href="https://mui.com/material-ui/getting-started/templates/">templates</Link>
       {' in the Material UI documentation.'}
+      <Typography variant="h5" component="h1" color="text.darkBlue">
+          The purpose of this project is to create a web application
+          for helping a user to elaborate Life Strategy in order to have more successful and meaningful life.
+      </Typography>
+      <Typography paragraph variant="body1" color="text.darkBlue">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+          Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+          Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
+          Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad
+          litora torquent per conubia nostra, per inceptos himenaeos.
+          Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+          Sed nisi. Nulla quis sem at nibh elementum imperdiet.
+      </Typography>
     </Typography>
   );
 }
