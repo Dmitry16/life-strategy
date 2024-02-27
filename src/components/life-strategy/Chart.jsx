@@ -28,18 +28,32 @@ const Chart = React.memo(() => {
         });
     }).flat();
 
-    // console.log('Chart::chartData:::', chartData);
+    // const areasMap = new Map([
+    //     ['Relationships', 10],
+    //     ['Body, Mind and Spirituality', 20],
+    //     ['Community and Social Life', 30],
+    //     ['Job, learning and finances', 40],
+    //     ['Interests, hobbies and entertainment', 50],
+    //     ['Personal care', 60],
+    // ]);
+
+    const unitsToAreaMap = new Map(Object.entries(state).map(([key, value]) => {
+        return Object.keys(value).map(unit => [unit, key]);
+    }).flat());
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
-          return (
-            <div className="custom-tooltip" style={{backgroundColor: 'rgba(250,250,250,0.9)', padding: 5 }}>
-              <div className="label">{`${payload[0].payload.name}`}</div>
-              <div className="label">{`importance : ${payload[0].payload.importance}`}</div>
-              <div className="label">{`satisfaction : ${payload[0].payload.satisfaction}`}</div>
-              <div className="label">{`time spent : ${payload[0].payload.timeSpent}`}</div>
-            </div>
-          );
+            const area = unitsToAreaMap.get(payload[0].payload.name);
+            const unit = payload[0].payload.name;
+            return (
+                <div className="custom-tooltip" style={{backgroundColor: 'rgba(250,250,250,0.9)', padding: 5 }}>
+                    <div className="label">{`${unit}`}</div>
+                    <div className="label">{`importance : ${payload[0].payload.importance}`}</div>
+                    <div className="label">{`satisfaction : ${payload[0].payload.satisfaction}`}</div>
+                    <div className="label">{`time spent : ${payload[0].payload.timeSpent}`}</div>
+                    <div className="label">{`status : ${state[area][unit]['status']}`}</div>
+                </div>
+            );
         }
         return null;
     };
@@ -61,7 +75,7 @@ const Chart = React.memo(() => {
             updatedState[area][key].checked = false;
         });
         setState(updatedState);
-        localStorage.setItem('state', JSON.stringify(updatedState));
+        // localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
     return (

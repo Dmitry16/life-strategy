@@ -9,8 +9,6 @@ import Recommendation from './Recommendation';
 import AIRecommendation from './AIRecommendation';
 import { LifeStrategyContext } from '../../context';
 
-// 'This tool is designed to help you create your life strategy. You can use it to analyze your life and set goals for the future. You can also use it to track your progress and make adjustments to your strategy. To get started, click on the "Strategic Life Areas" tab and start adding your goals. You can also use the "Explanation" tab to learn more about the tool and how to use it. Good luck!'
-
 const dialogContent = {
     title: 'Usage Instructions',
     content: `This tool is designed to help you create a life strategy.
@@ -33,21 +31,23 @@ const CreateLS = React.memo(() => {
         setState({ ...state, showAIRecommendation: false });
     }, []);
 
-    // console.log('CreateLS:::');
+    console.log('CreateLS::state::2:', state);
 
     return (
         <Box sx={{ mx: 8 }}>
             <Stack spacing={2}>
+                <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Typography variant="h5" component="h1" color="text.darkBlue">
+                        Let's create your Life Strategy!
+                    </Typography>
+                    <Typography variant="body1" component="h1" color="text.darkBlue">
+                        <Button onClick={openDialogCallback} variant="text" color="primary">
+                            <span>How to use this tool?</span>
+                        </Button>
+                    </Typography>
+                </Box>
                 <Typography variant="h5" component="h1" color="text.darkBlue">
-                    Let's create your Life Strategy!
-                </Typography>
-                <Typography variant="body1" component="h1" color="text.darkBlue">
-                    <Button onClick={openDialogCallback} variant="text" color="primary">
-                        How to use this tool?
-                    </Button>
-                </Typography>
-                <Typography variant="h5" component="h1" color="text.darkBlue">
-                    Strategic Life Areas
+                    Life Areas and their Units
                 </Typography>
                 <Box sx={{ mt: 2 }}>
                     <Grid container spacing={2}>

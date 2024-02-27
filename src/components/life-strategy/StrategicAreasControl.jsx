@@ -7,27 +7,19 @@ import { LifeStrategyContext } from '../../context';
 
 const StrategicAreasControl = React.memo(() => {
     const { state, setState } = useContext(LifeStrategyContext);
-    // const [area, setArea] = useState();
-    // localStorage.setItem('state', JSON.stringify(state));
 
     useEffect(() => {
         const localState = JSON.parse(localStorage.getItem('state'));
-        // console.log('StrategicAreasControl::useEffect111:::localState::', localState);
         if (localState) {
             setState(localState);
         }
     }, []);
 
-    useEffect(() => {
-        // console.log('StrategicAreasControl::useEffect222:::state::', state);
-
-        localStorage.setItem('state', JSON.stringify(state));
-    }, [state.selectedArea]);
-
-    // console.log('StrategicAreasControl::state::', state);
+    // useEffect(() => {
+    //     localStorage.setItem('state', JSON.stringify(state));
+    // }, [state.selectedArea]);
 
     const handleChange = ({ target: { value }}) => {
-        // setArea(value);
         setState({
             ...state,
             selectedArea: value,

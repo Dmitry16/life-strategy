@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Box, Stack, Typography, Grid, Tabs, Tab, Slider } from '@mui/material';
 import { LifeStrategyContext } from '../../context';
+import { calculateAndAddStatusToLifeUnit } from '../../utils/status';
 
 const Metrics = ({ area }) => {
     const { state, setState } = useContext(LifeStrategyContext);
@@ -10,6 +11,9 @@ const Metrics = ({ area }) => {
     useEffect(() => {
         const localState = JSON.parse(localStorage.getItem('state'));
         if (localState) {
+
+            // console.log('Metrics::useEffect::localState:::', localState);
+
             setState(localState);
         }
     }, []);
@@ -24,6 +28,7 @@ const Metrics = ({ area }) => {
         setSliderValue(getSliderValue(selectedUnits(area), selectedTab));
     }, [selectedTab, area, state]);
 
+
     const mapSliderValueToSelectedUnits = (selectedUnits, value) => {
         return selectedUnits.reduce((acc, key) => {
             return {
@@ -36,17 +41,77 @@ const Metrics = ({ area }) => {
         }, {});
     };
 
+    const mapUnitStatusToNumber = (unitStatus) => {
+        switch (unitStatus) {
+            case 'weak':
+                return 1;
+            case 'neutral':
+                return 2;
+            case 'strong':
+                return 3;
+            default:
+                return 0;
+        }
+    };
+
+    const calculateAreaStatus = (area) => {
+        const units = Object.entries(area).filter(([key, value]) => key !== 'name').map(([key, value]) => value);
+
+        const unitsStatus = units.map(unit => unit.status);
+        const unitsStatusNumbers = unitsStatus.map(unitStatus => mapUnitStatusToNumber(unitStatus));
+        const sum = unitsStatusNumbers.reduce((acc, cur) => acc + cur, 0);
+        const average = sum / unitsStatusNumbers.length;
+        if (average < 2) {
+            return 'weak';
+        } else if (average === 2) {
+            return 'neutral';
+        } else {
+            return 'strong';
+        }
+    };
+
+    // console.log('Metrics::calculateAreaStatus:::', calculateAreaStatus(state[area]));
+
+    const mapAreaStatusToAreasData = (state, area) => {
+        // console.log('Metrics::mapAreaStatusToAreasData::state:::', state);
+
+        const updatedState = {...state};
+        const areaStatus = calculateAreaStatus(state[area]);
+
+        console.log('Metrics::mapAreaStatusToAreasData::areaStatus:::', areaStatus);
+
+        updatedState.areasData = {
+            ...updatedState.areasData,
+            [area]: {
+                ...updatedState.areasData[area],
+                status: areaStatus,
+            },
+        };
+        return updatedState;
+    };
+
+    // console.log('Metrics::mapAreaStatusToAreasData:::', mapAreaStatusToAreasData(state, area));
+
     const handleSliderChange = (event, newValue) => {
-        const updatedState = {
+        const stateWithSliderValue = {
             ...state,
             [area]: {
                 ...state[area],
                 ...mapSliderValueToSelectedUnits(selectedUnits(area), newValue),
             },
         };
+
+        // console.log('Metrics::handleSliderChange::111:::', stateWithSliderValue);
+
+        const updatedState = calculateAndAddStatusToLifeUnit(stateWithSliderValue);
+
+        const updatedStateWithAreaStatus = mapAreaStatusToAreasData(updatedState, area);
+
+        // console.log('Metrics::handleSliderChange::updatedStateWithAreaStatus::222:', updatedStateWithAreaStatus);
+
+        localStorage.setItem('state', JSON.stringify(updatedStateWithAreaStatus));
         setSliderValue(newValue);
-        setState(updatedState);
-        localStorage.setItem('state', JSON.stringify(updatedState));
+        setState(updatedStateWithAreaStatus);
     };
 
 
