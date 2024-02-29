@@ -15,7 +15,7 @@ const CreateLifeStrategy = React.memo(() => {
     // const [DialogComponent, openDialog] = useDialog();
 
     return (
-        <Box sx={{ mx: 8 }}>
+        <Box sx={{ mx: 0 }}>
             <Stack spacing={2}>
                 <CreateLS />
             </Stack>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-    ScatterChart,
+    ScatterChart as Chart,
     Scatter,
     XAxis,
     YAxis,
@@ -14,7 +14,7 @@ import {
 } from 'recharts';
 import { LifeStrategyContext } from '../../context';
 
-const Chart = React.memo(() => {
+const ScatterChart = React.memo(() => {
     const { state, setState } = useContext(LifeStrategyContext);
     
     const chartData = Object.entries(state).map(([_, value]) => {
@@ -79,8 +79,8 @@ const Chart = React.memo(() => {
     };
 
     return (
-        <ResponsiveContainer width="100%" height={500}>
-            <ScatterChart
+        <ResponsiveContainer width="100%" height={400}>
+            <Chart
                 margin={{
                 top: 20,
                 right: 20,
@@ -101,9 +101,9 @@ const Chart = React.memo(() => {
             <Scatter name="Life Unit" data={chartData} fill="#8884d8" onClick={handleClick}>
                 {/* <LabelList position="top" dataKey="name" /> */}
             </Scatter>
-          </ScatterChart>
+          </Chart>
         </ResponsiveContainer>
     );
 });
 
-export default Chart;
+export default ScatterChart;
