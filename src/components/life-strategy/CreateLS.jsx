@@ -2,7 +2,8 @@ import React, { useCallback, useContext, useEffect } from 'react';
 import { Box, Paper, Stack, Typography, Grid, Button } from '@mui/material';
 import StrategicAreas from './StrategicAreas';
 import Explanation from './Explanation';
-import Chart from './Chart';
+import ScatterChart from '../charts/ScatterChart';
+import BarChart from '../charts/BarChart';
 import useDialog from '../../hooks/useDialog';
 import StrategicAreasControl from './StrategicAreasControl';
 import Recommendation from './Recommendation';
@@ -34,7 +35,7 @@ const CreateLS = React.memo(() => {
     console.log('CreateLS::state::2:', state);
 
     return (
-        <Box sx={{ mx: 8 }}>
+        <Box sx={{m:0}}>
             <Stack spacing={2}>
                 <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Typography variant="h5" component="h1" color="text.darkBlue">
@@ -59,7 +60,8 @@ const CreateLS = React.memo(() => {
                             </Stack>
                         </Grid>
                         <Grid item xs={8}>
-                            <Chart />
+                            <BarChart />
+                            <ScatterChart />
                         </Grid>
                     </Grid>
                 </Box>

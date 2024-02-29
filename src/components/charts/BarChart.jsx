@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import {
-    ScatterChart,
+    BarChart as Chart,
+    Bar,
     Scatter,
     XAxis,
     YAxis,
@@ -14,7 +15,7 @@ import {
 } from 'recharts';
 import { LifeStrategyContext } from '../../context';
 
-const Chart = React.memo(() => {
+const BarChart = React.memo(() => {
     const { state, setState } = useContext(LifeStrategyContext);
     
     const chartData = Object.entries(state).map(([_, value]) => {
@@ -27,6 +28,8 @@ const Chart = React.memo(() => {
             };
         });
     }).flat();
+
+    console.log('BarChart::chartData:::', chartData);
 
     // const areasMap = new Map([
     //     ['Relationships', 10],
@@ -79,31 +82,27 @@ const Chart = React.memo(() => {
     };
 
     return (
-        <ResponsiveContainer width="100%" height={500}>
-            <ScatterChart
+        <ResponsiveContainer width="100%" height={250}>
+            <Chart
                 margin={{
                 top: 20,
                 right: 20,
                 bottom: 20,
                 left: 20,
                 }}
+                data={chartData}
+                layout='vertical'
             >
-            <CartesianGrid />
-            <XAxis type="number" dataKey="satisfaction" range={[0, 900]} name="satisfaction" unit="">
-                <Label value="satisfaction" offset={0} position="insideBottom" />
-            </XAxis>
-            <YAxis type="number" dataKey="importance" range={[0, 900]} name="importance" unit="">
-                <Label value="importance" angle={-90} position="insideLeft" />
-            </YAxis>
-            <ZAxis type="number" dataKey="timeSpent" range={[0, 900]} name="time spent" unit="" />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} content={<CustomTooltip />}/>
-            {/* <Legend /> */}
-            <Scatter name="Life Unit" data={chartData} fill="#8884d8" onClick={handleClick}>
-                {/* <LabelList position="top" dataKey="name" /> */}
-            </Scatter>
-          </ScatterChart>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                {/* <Tooltip /> */}
+                {/* <Legend /> */}
+                <Bar dataKey="pv" fill="#8884d8" />
+                <Bar dataKey="uv" fill="#82ca9d" />
+            </Chart>
         </ResponsiveContainer>
     );
 });
 
-export default Chart;
+export default BarChart;
