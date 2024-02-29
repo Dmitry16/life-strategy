@@ -12,33 +12,32 @@ import {
     Label,  
     LabelList,
     ResponsiveContainer,
+    Rectangle,
 } from 'recharts';
 import { LifeStrategyContext } from '../../context';
 
 const BarChart = React.memo(() => {
     const { state, setState } = useContext(LifeStrategyContext);
-    
-    const chartData = Object.entries(state).map(([_, value]) => {
-        return Object.entries(value).map(([key, value]) => {
-            return {
-                name: key,
-                satisfaction: value.satisfaction,
-                importance: value.importance,
-                timeSpent: value.timeSpent,
-            };
-        });
-    }).flat();
 
-    console.log('BarChart::chartData:::', chartData);
+    const calculateBarFill = points => {
+        if (!points) return 'grey';
 
-    // const areasMap = new Map([
-    //     ['Relationships', 10],
-    //     ['Body, Mind and Spirituality', 20],
-    //     ['Community and Social Life', 30],
-    //     ['Job, learning and finances', 40],
-    //     ['Interests, hobbies and entertainment', 50],
-    //     ['Personal care', 60],
-    // ]);
+        if (points === 25) {
+            return 'red';
+        } else if (points === 50) {
+            return 'orange';
+        } else if (points === 75) {
+            return 'green';
+        }
+    };
+
+    const chartData = Object.values(state.areasData).map(value => ({
+        name: value.name,
+        points: value.points,
+        fill: calculateBarFill(value.points),
+    })).flat();
+
+    // console.log('BarChart::chartData:::', chartData);
 
     const unitsToAreaMap = new Map(Object.entries(state).map(([key, value]) => {
         return Object.keys(value).map(unit => [unit, key]);
@@ -61,45 +60,46 @@ const BarChart = React.memo(() => {
         return null;
     };
 
+    const areasMap = new Map([
+        ['Relationships', 10],
+        ['Body, Mind and Spirituality', 20],
+        ['Community and Social Life', 30],
+        ['Job, learning and finances', 40],
+        ['Interests, hobbies and entertainment', 50],
+        ['Personal care', 60],
+    ]);
+
     const handleClick = e => {
-        const area = Object.entries(state).find(([_, value]) => Object.keys(value).includes(e.name))[0];
         const updatedState = {
             ...state,
-            [area]: {
-                ...state[area],
-                [e.name]: {
-                    ...state[area][e.name],
-                    checked: true,
-                },
-            },
-            selectedArea: area,
+            selectedArea: areasMap.get(e.name),
         };
-        Object.keys(state[area]).filter(key => key !== e.name).forEach(key => {
-            updatedState[area][key].checked = false;
-        });
         setState(updatedState);
-        // localStorage.setItem('state', JSON.stringify(updatedState));
+        localStorage.setItem('state', JSON.stringify(updatedState));
     };
 
     return (
         <ResponsiveContainer width="100%" height={250}>
             <Chart
                 margin={{
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20,
+                    top: 20,
+                    right: 20,
+                    bottom: 20,
+                    left: 20,
                 }}
                 data={chartData}
-                layout='vertical'
+                // layout='vertical'
             >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                {/* <Tooltip /> */}
+                <Tooltip />
                 {/* <Legend /> */}
-                <Bar dataKey="pv" fill="#8884d8" />
-                <Bar dataKey="uv" fill="#82ca9d" />
+                <Bar
+                    dataKey="points"
+                    activeBar={<Rectangle stroke="blue"/>}
+                    onClick={handleClick}
+                />
             </Chart>
         </ResponsiveContainer>
     );

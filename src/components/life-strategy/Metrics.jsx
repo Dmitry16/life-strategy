@@ -62,11 +62,11 @@ const Metrics = ({ area }) => {
         const sum = unitsStatusNumbers.reduce((acc, cur) => acc + cur, 0);
         const average = sum / unitsStatusNumbers.length;
         if (average < 2) {
-            return 'weak';
+            return ['weak', 25];
         } else if (average === 2) {
-            return 'neutral';
+            return ['neutral', 50];
         } else {
-            return 'strong';
+            return ['strong', 75];
         }
     };
 
@@ -76,7 +76,7 @@ const Metrics = ({ area }) => {
         // console.log('Metrics::mapAreaStatusToAreasData::state:::', state);
 
         const updatedState = {...state};
-        const areaStatus = calculateAreaStatus(state[area]);
+        const [areaStatus, points] = calculateAreaStatus(state[area]);
 
         console.log('Metrics::mapAreaStatusToAreasData::areaStatus:::', areaStatus);
 
@@ -85,6 +85,7 @@ const Metrics = ({ area }) => {
             [area]: {
                 ...updatedState.areasData[area],
                 status: areaStatus,
+                points,
             },
         };
         return updatedState;

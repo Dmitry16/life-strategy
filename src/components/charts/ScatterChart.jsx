@@ -79,7 +79,7 @@ const ScatterChart = React.memo(() => {
     };
 
     return (
-        <ResponsiveContainer width="100%" height={500}>
+        <ResponsiveContainer width="100%" height={400}>
             <Chart
                 margin={{
                 top: 20,
