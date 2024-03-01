@@ -5,6 +5,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
 import { LifeStrategyContext } from '../../context';
 import useDialog from '../../hooks/useDialog';
+import CommentIcon from '@mui/icons-material/Comment';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
@@ -16,13 +17,15 @@ const AIRecommendation = () => {
 
     const [recommendation, setRecommendation] = useState('No recommendation. You are perfect!');
 
-    console.log('AIRecommendation:::state:::', state);
+    // console.log('AIRecommendation:::state:::', state);
 
     const url = "https://api.openai.com/v1/chat/completions";
 
-    const sysMsg = `You are a personal life coach. 
-    In a conversational professional tone, based on the [User Data] provide a recommendation
-    as to what actions to take in order to get a good and balanced life across all areas.`;
+    const sysMsg = `You are a helpful personal life coach. 
+    In a professional tone, based on the [User Data] provide a brief structured recommendation 
+    of 100-150 words use bullet points, numbered lists, etc. (e.g. 1. Do this \n 2. Do that \n 3. Do this etc.)
+    as to what actions to take in order to get a good and balanced life across all areas. Explain how could I 
+    leverage the strong areas in order to improve the weak areas.`;
 
     const prompt = `User Data: ${JSON.stringify(state)}`;
 
@@ -59,6 +62,13 @@ const AIRecommendation = () => {
             return Promise.reject(
                 "Ooops! Smth's wrong :/ Please, try again later."
             )});
+        // setRecommendation(`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        //     Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        //     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        //     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        //     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+        // );
+
     }, [state.showAIRecommendation]);
 
     const handleClick = () => {
@@ -76,6 +86,7 @@ const AIRecommendation = () => {
                     id="panel-header"
                     onClick={handleClick}
                 >
+                    <CommentIcon sx={{mt: 0.5, mr: 4, color: 'text.darkBlue'}}/>
                     <Typography variant="h6" component="h2" color="text.darkBlue">
                         AI Recommendation
                     </Typography>
@@ -84,11 +95,28 @@ const AIRecommendation = () => {
                     <List dense>
                         <ListItem>
                             <Stack spacing={0}>
-                                <ListItemButton onClick={() => openDialog({
-                                    content: recommendation
+                                <ListItemButton
+                                    alignItems="center"
+                                    sx={{
+                                        border: '1px solid #e0e0e0', borderRadius: '5px', padding: '10px',
+                                        '&:hover': { backgroundColor: '#f0f0f0' },
+                                    }}
+                                    onClick={() => openDialog({
+                                        content: recommendation
                                 })}>
-                                    <ListItemText primary='Make it bigger'/>
+                                    <ListItemText
+                                        sx={{
+                                            fontSize: '1.2rem', fontWeight: 600, color: 'text.darkBlue'
+                                        }}
+                                        primary='Full page display'
+                                    />
                                 </ListItemButton>
+                                <ListItemText
+                                    sx={{
+                                        fontSize: '1.2rem', fontWeight: 600, color: 'text.darkBlue'
+                                    }}
+                                    primary={recommendation}
+                                />
                             </Stack>
                         </ListItem>
                     </List>

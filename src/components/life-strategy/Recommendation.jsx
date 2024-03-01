@@ -4,6 +4,7 @@ import { Box, Paper, Typography, Accordion, AccordionSummary, AccordionDetails,
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { styled } from '@mui/material/styles';
 import { LifeStrategyContext } from '../../context';
+import CommentIcon from '@mui/icons-material/Comment';
 
 const StyledListItemText = styled(ListItemText)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
@@ -83,8 +84,9 @@ const Recommendation = () => {
                     id="panel-header"
                     onClick={handleClick}
                 >
+                    <CommentIcon sx={{mt: 0.5, mr: 4, color: 'text.darkBlue'}}/>
                     <Typography variant="h6" component="h2" color="text.darkBlue">
-                        Recommendation to your life strategy
+                        Recommendation to Your Life Strategy
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails sx={{mt: 0, pt: 0}}>
