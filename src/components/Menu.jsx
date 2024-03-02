@@ -19,7 +19,7 @@ const Menu = () => {
             <Toolbar sx={{}} disableGutters>
                 <ButtonRouter text='Home' href={'/'}/>
                 <ButtonRouter text='Strategize' href={'/strategize'}/>
-                <ButtonRouter text='Login' href={'/login'}/>
+                {/* <ButtonRouter text='Login' href={'/login'}/> */}
                 <ButtonRouter text='About' href={'/about'}/>
             </Toolbar>
         </Box>
