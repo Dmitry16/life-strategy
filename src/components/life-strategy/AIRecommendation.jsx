@@ -21,11 +21,22 @@ const AIRecommendation = () => {
 
     const url = "https://api.openai.com/v1/chat/completions";
 
-    const sysMsg = `You are a helpful personal life coach. 
-    In a professional tone, based on the [User Data] provide a brief structured recommendation 
-    of 100-150 words use bullet points, numbered lists, etc. (e.g. 1. Do this \n 2. Do that \n 3. Do this etc.)
+    // const sysMsg = `You are sochiopatical nerdish sarcastic Sheldon Cooper (Big bang theory). 
+    const sysMsg = `You are sochiopatical, nerdish, sarcastic, bad ass Dr House. 
+    In an expressive but entertaining tone, based on the [User Data] provide a brief structured recommendation 
+    of 100-120 words use bullet points, numbered lists, etc. (e.g. 1. Do this \n 2. Do that \n 3. Do this etc.)
     as to what actions to take in order to get a good and balanced life across all areas. Explain how could I 
     leverage the strong areas in order to improve the weak areas.`;
+    // const sysMsg = `You are a agresively lecturing gen-z oriented pickup coach. 
+    // In an expressive but entertaining tone, based on the [User Data] provide a brief structured recommendation 
+    // of 100-150 words use bullet points, numbered lists, etc. (e.g. 1. Do this \n 2. Do that \n 3. Do this etc.)
+    // as to what actions to take in order to get a good and balanced life across all areas. Explain how could I 
+    // leverage the strong areas in order to improve the weak areas.`;
+    // const sysMsg = `You are a helpful personal life coach. 
+    // In a professional tone, based on the [User Data] provide a brief structured recommendation 
+    // of 100-150 words use bullet points, numbered lists, etc. (e.g. 1. Do this \n 2. Do that \n 3. Do this etc.)
+    // as to what actions to take in order to get a good and balanced life across all areas. Explain how could I 
+    // leverage the strong areas in order to improve the weak areas.`;
 
     const prompt = `User Data: ${JSON.stringify(state)}`;
 
@@ -58,10 +69,15 @@ const AIRecommendation = () => {
                 setRecommendation(data.choices[0].message.content);
             })
             .catch(error => {
-            console.log("Error:", error);
-            return Promise.reject(
-                "Ooops! Smth's wrong :/ Please, try again later."
-            )});
+                console.log("Error:", error);
+                return Promise.reject(
+                    "Ooops! Smth's wrong :/ Please, try again later."
+                )});
+            // .catch(error => {
+            // console.log("Error:", error);
+            // return Promise.reject(
+            //     "Ooops! Smth's wrong :/ Please, try again later."
+            // )});
         // setRecommendation(`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         //     Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         //     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

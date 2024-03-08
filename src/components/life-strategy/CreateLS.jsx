@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { Box, Paper, Stack, Typography, Grid, Button } from '@mui/material';
+import { Box, Paper, Stack, Typography, Grid, Button,
+    Stepper, Step, StepLabel } from '@mui/material';
 import StrategicAreas from './StrategicAreas';
 import Explanation from './Explanation';
 import ScatterChart from '../charts/ScatterChart';
@@ -10,15 +11,28 @@ import Recommendation from './Recommendation';
 import AIRecommendation from './AIRecommendation';
 import { LifeStrategyContext } from '../../context';
 
+const steps = ['Select an area', 'Select an unit', 'Set the importance, satisfaction and effort'];
+
 const dialogContent = {
     title: 'Usage Instructions',
-    content: `This tool is designed to help you create a life strategy.
-    It is based on the concept of life areas and their importance.
-    You can add, remove and edit life areas and their importance.
-    The chart will show you the current state of your life strategy.
-    The goal is to have a balanced life strategy.
-    You can use the chart to see which areas need more attention and which areas are doing well.
-    `,
+    content: 
+    <Box>
+        <div>
+            This tool is designed to help you create a life strategy.
+            It is based on the concept of life areas and their importance.
+            You can add, remove and edit life areas and their importance.
+            The chart will show you the current state of your life strategy.
+            The goal is to have a balanced life strategy.
+            You can use the chart to see which areas need more attention and which areas are doing well.
+        </div>
+        <Stepper activeStep={0} alternativeLabel>
+            {steps.map((label) => (
+                <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                </Step>
+            ))}
+        </Stepper>
+    </Box>,
 };
 
 const CreateLS = React.memo(() => {
