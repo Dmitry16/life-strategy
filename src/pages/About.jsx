@@ -13,19 +13,23 @@ const About = () => {
             <Stack spacing={2}>
                 <Grid container spacing={2}>
                     <Grid item xs={16}>
-                        <Typography variant="h5" component="h1" color="text.darkBlue">
-                            Life Strategy
-                        </Typography>
-                        <Typography variant="body1" component="h1" color="text.darkBlue">
-                            Is an integrated set of choices and actions that enables a person to achieve
-                            the best possible outcomes in order to have the desired life.
-                        </Typography>
-                        <Typography variant="h5" component="h1" color="text.darkBlue">
-                            Strategic Life Areas
-                        </Typography>
-                        <Typography variant="body1" component="h1" color="text.darkBlue">
-                            Life Strategy is built on the foundation of strategic life areas. These are areas of life that are important to you and that you want to improve.
-                        </Typography>
+                        <Paper elevation={1} sx={{ mb:2, p:2 }}>
+                            <Typography variant="h5" component="h1" color="text.darkBlue">
+                                Life Strategy
+                            </Typography>
+                            <Typography variant="body1" component="h1" color="text.darkBlue">
+                                Is an integrated set of choices and actions that enables a person to achieve
+                                the best possible outcomes in order to have the desired life.
+                            </Typography>
+                        </Paper>
+                        <Paper elevation={1} sx={{ mb:2, p:2 }}>
+                            <Typography variant="h5" component="h1" color="text.darkBlue">
+                                Strategic Life Areas
+                            </Typography>
+                            <Typography variant="body1" component="h1" color="text.darkBlue">
+                                Life Strategy is built on the foundation of strategic life areas. These are areas of life that are important to you and that you want to improve.
+                            </Typography>
+                        </Paper>
                     </Grid>
                     <Grid item xs={4}>
                         <Paper elevation={1} sx={{ mb:2, p:2 }}>
