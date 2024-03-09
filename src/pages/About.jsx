@@ -15,11 +15,39 @@ const About = () => {
                     <Grid item xs={16}>
                         <Paper elevation={1} sx={{ mb:2, p:2 }}>
                             <Typography variant="h5" component="h1" color="text.darkBlue">
-                                Life Strategy
-                            </Typography>
-                            <Typography variant="body1" component="h1" color="text.darkBlue">
-                                Is an integrated set of choices and actions that enables a person to achieve
+                                <p>
+                                This tool is built leveraging the Artificial Intelligence (OpenAI GPT models) to elaborate a life strategy for the user.
+                                The functionality is designed to help an user create or adjust their life strategy.
+                                It is based on the concepts of Life Strategy, Life Areas and their Units (different aspects of life).
+                                The goal is to have such a Strategy which would make Life balanced across all the Areas.
+                                </p>
+                                <p>
+                                - <b>Life Strategy</b> can be seen as an integrated set of choices and actions that enables a person to achieve
                                 the best possible outcomes in order to have the desired life.
+                                </p>
+                                <p>
+                                - <b>Life Areas</b> are common aspects of life that are important to most people.
+                                </p>
+                                <p>
+                                - <b>Life Area Units</b> are specific aspects of life that are part of a life area.
+                                </p>
+                                <p>
+                                In order to achieve that, the user needs to set or adjust the current state of their life areas and their units.
+                                After that the system will provide a recommendation on what actions to take in order to get a good and balanced life across all areas.
+                                </p>
+                                <p>
+                                To start off user can switch areas, select one or several units setting or adjusting the importance, satisfaction and effort (time spent).
+                                The charts will show you the current state of your life areas (Bar chart) and their units (Scatter chart).
+                                As to the Areas, ideally you want to have the most of
+                                them in green color. The green color means that the status of the area is good.
+                                The yellow color means that the status of the area is average. 
+                                The red color means that the status of the area is bad.
+                                Regarding to the Units ideally most of them should be in the upper right corner of the scatter chart.
+                                Such position of an unit means that the relation between importance and satisfaction is good
+                                so its status is high. In other words user is doing well in that aspect of their life.
+                                E.g. hight importance/high satisfaction = good, high importance/low satisfaction = bad. 
+                                You can use the charts to see which areas need more attention and which areas are doing well.
+                                </p>
                             </Typography>
                         </Paper>
                         <Paper elevation={1} sx={{ mb:2, p:2 }}>
