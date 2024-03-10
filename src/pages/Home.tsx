@@ -1,9 +1,12 @@
 import React from 'react';
-import { Box, Button, Card, CardActions, CardContent, CardMedia, ImageList, ImageListItem, ImageListItemBar, Paper, Typography } from '@mui/material';  
-import constructionWorker from '../../public/pics/constructionWorker.jpg';
-import meeting2 from '../../public/pics/meeting2.jpg';
-import girlOnTheBed from '../../public/pics/girlOnTheBed.jpg';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, 
+  ImageList, ImageListItem, ImageListItemBar, Paper, Typography } from '@mui/material';  
+import meeting1_m from '../../public/pics/meeting1_m.jpg';
+import design1_m from '../../public/pics/design1_m.jpg';
+import workWithNotesOnTheWall_m from '../../public/pics/workWithNotesOnTheWall_m.jpg';
 import theme from '../theme';
+import ButtonRouter from '../router/ButtonRouter';
+
 
 // const StyledListItem = styled(ListItem)(({ theme }) => ({
 //     color: theme.palette.text.darkBlue,
@@ -12,25 +15,29 @@ import theme from '../theme';
 interface OptionProps {
     option: string
     picture: string
+    text: string
 }
 
 const imageData: OptionProps[] = [
   {
     option: 'Design Your Desired Life',
-    picture: constructionWorker,
+    picture: design1_m,
+    text: 'Design your life with intention, purpose and clarity. Create a life that is meaningful and fulfilling.'
   },
   {
     option: 'Create Your Life Strategy',
-    picture: meeting2,
+    picture: workWithNotesOnTheWall_m,
+    text: 'Create a life strategy that is aligned with your values and goals. Live a life that is meaningful and fulfilling.'
   },
   {
     option: 'Strategic Life: Applying Boardroom Thinking to Personal Success',
-    picture: girlOnTheBed,
+    picture: meeting1_m,
+    text: 'Learn how to apply boardroom thinking to personal success. Create a life that is strategic and focused.'
   }
 ]
 
 
-const OptionCard = ({ option, picture }: OptionProps) => {
+const OptionCard = ({ option, picture, text }: OptionProps) => {
   return (
     <Card 
       raised 
@@ -61,17 +68,13 @@ const OptionCard = ({ option, picture }: OptionProps) => {
           <Typography gutterBottom variant="h5" component="div">
             {option}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Al contrario del pensamiento popular, el texto de 
-            Lorem Ipsum no es simplemente texto aleatorio. 
-            Tiene sus raices en una pieza clasica de la literatura 
-            del Latin, que data del año 45 antes de Cristo, 
-            haciendo que este adquiera mas de 2000 años de antiguedad.
+          <Typography variant="body1" color="text.darkBlue">
+            {text}
           </Typography>
         </CardContent>
       </Box>
       <CardActions sx={{ pb: 2 }}>
-        <Button size="small">Learn More</Button>
+        <ButtonRouter text='Learn More' href={'/about'}/>
       </CardActions>
     </Card>
   )
@@ -98,6 +101,7 @@ const Home = () => {
               key={item.option}
               option={item.option}
               picture={item.picture}
+              text={item.text}
             />
           ))
         }

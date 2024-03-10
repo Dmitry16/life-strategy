@@ -21,7 +21,7 @@ const Footer = () => {
             height: '5em' 
         }}>
             <Typography variant="body2" color="text.darkBlue" align="center">
-                Reptile Technologies © {new Date().getFullYear()}.
+                MustHave Technologies © {new Date().getFullYear()}.
             </Typography>
         </Box>
     );
