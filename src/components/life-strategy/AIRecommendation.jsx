@@ -46,7 +46,7 @@ const AIRecommendation = () => {
 
     // const prompt = `User: How can I channel my energy from one life area activity (e.g. meditation) into another (e.g. to find my significant other) ?`;
     
-    const promptData = Object.values(state.areasData).reduce((acc, area) => {
+    const promptData = state.areasData && Object.values(state.areasData).reduce((acc, area) => {
         if (!area.name) return acc;
         acc.push({ name: area.name, status: area.status });
         return acc;

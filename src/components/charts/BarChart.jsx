@@ -31,7 +31,7 @@ const BarChart = React.memo(() => {
         }
     };
 
-    const chartData = Object.values(state.areasData).map(value => ({
+    const chartData = state.areasData && Object.values(state.areasData).map(value => ({
         name: value.name,
         points: value.points,
         fill: calculateBarFill(value.points),
