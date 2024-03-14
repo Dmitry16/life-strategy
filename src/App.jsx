@@ -11,11 +11,11 @@ export default function App() {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    const localState = JSON.parse(localStorage.getItem('state'));
-    if (localState) {
-      console.log('Recommendation localState:', localState);
+    const localStorageState = JSON.parse(localStorage.getItem('state'));
+    if (localStorageState) {
+      console.log('App localStorageState:', localStorageState);
       
-      setState(localState);
+      setState(localStorageState);
     }
   }, []);
 

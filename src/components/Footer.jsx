@@ -12,7 +12,6 @@ const Footer = () => {
             justifyContent: 'center',
             alignItems: 'center',
             mb: 0, 
-            height: '20%', 
             position: 'sticky', 
             zIndex: 2,
             bgcolor: '#FFFFFF',
