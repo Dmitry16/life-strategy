@@ -16,8 +16,8 @@ const About = () => {
                         <Paper elevation={1} sx={{ mb:2, p:2 }}>
                             <Typography variant="h5" component="h1" color="text.darkBlue">
                                 <p>
-                                This tool is built leveraging the Artificial Intelligence (OpenAI GPT models) to elaborate a life strategy for the user.
-                                The functionality is designed to help an user create or adjust their life strategy.
+                                This tool is built leveraging the Artificial Intelligence (OpenAI GPT 4 model) to elaborate a life strategy for an user.
+                                The functionality is designed to help to create or adjust their life strategy.
                                 It is based on the concepts of Life Strategy, Life Areas and their Units (different aspects of life).
                                 The goal is to have such a Strategy which would make Life balanced across all the Areas.
                                 </p>

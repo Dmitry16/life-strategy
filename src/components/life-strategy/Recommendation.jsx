@@ -20,6 +20,7 @@ const recommendationText = `The main idea is to have all your life areas strong 
 
 const Recommendation = () => {
     const { state, setState } = useContext(LifeStrategyContext);
+    const areas = state?.areasData && Object.values(state?.areasData) || [];
 
     const handleClick = () => {
         setState({ ...state,
@@ -28,8 +29,6 @@ const Recommendation = () => {
     };
 
     const displayWeakAreas = () => {
-        const areas = Object.values(state.areasData);
-        
         const weakAreas = areas.filter(area => area.status === 'weak');
 
         return weakAreas.map(area => {
@@ -43,9 +42,7 @@ const Recommendation = () => {
         });
     };
 
-    const displayNeutralAreas = () => {
-        const areas = Object.values(state.areasData);
-        
+    const displayNeutralAreas = () => {        
         const neutralAreas = areas.filter(area => area.status === 'neutral');
 
         return neutralAreas.map(area => {
@@ -59,9 +56,7 @@ const Recommendation = () => {
         });
     };
 
-    const displayStrongAreas = () => {
-        const areas = Object.values(state.areasData);
-        
+    const displayStrongAreas = () => {        
         const strongAreas = areas.filter(area => area.status === 'strong');
 
         return strongAreas.map(area => {
