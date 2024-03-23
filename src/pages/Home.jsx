@@ -4,7 +4,7 @@ import { Box, Button, Card, CardActions, CardContent, CardMedia,
 import meeting1_m from '../../public/pics/meeting1_m.jpg';
 import design1_m from '../../public/pics/design1_m.jpg';
 import workWithNotesOnTheWall_m from '../../public/pics/workWithNotesOnTheWall_m.jpg';
-import theme from '../theme';
+// import theme from '../theme';
 import ButtonRouter from '../router/ButtonRouter';
 
 
@@ -12,13 +12,13 @@ import ButtonRouter from '../router/ButtonRouter';
 //     color: theme.palette.text.darkBlue,
 // }));
 
-interface OptionProps {
-    option: string
-    picture: string
-    text: string
-}
+// interface OptionProps {
+//     option: string
+//     picture: string
+//     text: string
+// }
 
-const imageData: OptionProps[] = [
+const imageData = [
   {
     option: 'Design Your Desired Life',
     picture: design1_m,
@@ -37,7 +37,7 @@ const imageData: OptionProps[] = [
 ]
 
 
-const OptionCard = ({ option, picture, text }: OptionProps) => {
+const OptionCard = ({ option, picture, text }) => {
   return (
     <Card 
       raised 
