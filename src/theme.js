@@ -1,28 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
-declare module '@mui/material/styles' {
-  interface TypeText {
-      darkGrey: string;
-      blue: string;
-      lightBlue: string;
-      darkBlue: string;
-      white: string;
-  }
-
-  interface PaletteColor {
-      second?: string;
-      spot?: string;
-  }
-
-  interface PaletteColorOptions {
-      main: string;
-      second?: string;
-      spot?: string;
-  }
-}
-
-
 // Create a theme instance.
 const theme = createTheme({
   palette: {
