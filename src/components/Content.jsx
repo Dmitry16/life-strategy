@@ -8,7 +8,7 @@ import About from '../pages/About';
 const Content = () => {
     return (
         <Routes>
-            <Route path="/life-strategy" element={<Home />} />
+            <Route index path="/life-strategy" element={<Home />} />
             <Route path="/life-strategy/strategize" element={<CreateLifeStrategy />} />
             <Route path="/life-strategy/login" element={<Login />} />
             <Route path="/life-strategy/about" element={<About />} />
