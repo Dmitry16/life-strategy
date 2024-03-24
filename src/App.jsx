@@ -27,13 +27,9 @@ export default function App() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            // alignItems: 'flex-end'
-            // backgroundColor: 'rgba(255, 255, 120, 0.6)',
-            // backgroundColor: '#f5f5aa',
           }}>
             <Box
               sx={{
-                // height: '60%',
                 display: 'flex',
                 flexDirection: 'column',
               }}
