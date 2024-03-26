@@ -65,16 +65,24 @@ const AIRecommendation = () => {
         ],
     };
 
-    console.log('AIRecommendation:::process.env.VITE_OPENAI:::', process.env.VITE_OPENAI);
+    const VITE_OPENAI = 'REPLACE_WITH_GH_SECRET';
 
     const params = {
         headers: {
-            Authorization: `Bearer ${process.env.VITE_OPENAI}`,
+            Authorization: `Bearer ${VITE_OPENAI}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
         method: "POST",
     };
+    // const params = {
+    //     headers: {
+    //         Authorization: `Bearer ${process.env.VITE_OPENAI}`,
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //     method: "POST",
+    // };
 
     useEffect(() => {
         if (!state.showAIRecommendation) {
