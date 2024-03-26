@@ -65,9 +65,11 @@ const AIRecommendation = () => {
         ],
     };
 
+    console.log('AIRecommendation:::process.env.VITE_OPENAI:::', process.env.VITE_OPENAI);
+
     const params = {
         headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_OPENAI}`,
+            Authorization: `Bearer ${process.env.VITE_OPENAI}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
