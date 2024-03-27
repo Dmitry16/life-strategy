@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { LifeStrategyContext } from '../../context';
 import useDialog from '../../hooks/useDialog';
 import CommentIcon from '@mui/icons-material/Comment';
+import Progress from '../Progress';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
@@ -15,7 +16,8 @@ const AIRecommendation = () => {
     const { state, setState } = useContext(LifeStrategyContext);
     const [ DialogComponent, openDialog ] = useDialog();
 
-    const [recommendation, setRecommendation] = useState('No recommendation. You are perfect!');
+    const [recommendation, setRecommendation] = useState('No recommendation yet. You are perfect! ;)');
+    const [loading, setLoading] = useState(false);
 
     // console.log('AIRecommendation:::state:::', state);
 
@@ -74,18 +76,23 @@ const AIRecommendation = () => {
         method: "POST",
     };
 
+    console.log('AIRecommendation:::state.showAIRecommendation:::', state.showAIRecommendation);
+
     useEffect(() => {
         if (!state.showAIRecommendation) {
             return;
         }
         fetch(url, params)
+            .then(setLoading(true))
             .then(response => response.json())
             .then(data => {
                 // return data.choices[0].message.content
+                setLoading(false);
                 console.log('AIRecommendation:::useEffect:::data:::', data);
                 setRecommendation(data.choices[0].message.content);
             })
             .catch(error => {
+                setLoading(false);
                 console.log("Error:", error);
                 return Promise.reject(
                     "Ooops! Smth's wrong :/ Please, try again later."
@@ -146,6 +153,7 @@ const AIRecommendation = () => {
                                     }}
                                     primary={recommendation}
                                 />
+                                {loading && <Progress />}
                             </Stack>
                         </ListItem>
                     </List>
