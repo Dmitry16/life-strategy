@@ -6,16 +6,19 @@ import Footer from './components/Footer';
 import Menu from './components/Menu';
 import { LifeStrategyContext } from './context';
 import { initialState } from './state';
+import { calculateAndAddStatusToLifeUnitsAndAreas } from './utils/status';
 
 export default function App() {
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
     const localStorageState = JSON.parse(localStorage.getItem('state'));
-    if (localStorageState) {
-      console.log('App localStorageState:', localStorageState);
-      
+    if (localStorageState) {      
       setState(localStorageState);
+    } else {
+      const updatedStateWithAreaStatus = calculateAndAddStatusToLifeUnitsAndAreas(state);
+      localStorage.setItem('state', JSON.stringify(updatedStateWithAreaStatus));
+      setState(updatedStateWithAreaStatus);
     }
   }, []);
 
@@ -30,6 +33,7 @@ export default function App() {
           }}>
             <Box
               sx={{
+                // height: '60%',
                 display: 'flex',
                 flexDirection: 'column',
               }}
