@@ -1,4 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Simple workflow for deploying static content to GitHub Pages and Injecting OPENAI_API_KEY into code
 name: Deploy static content to Pages
 
 on:
@@ -39,6 +39,11 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Inject OPENAI_API_KEY into React Code
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          sed -i "s|REPLACE_WITH_GH_SECRET|${OPENAI_API_KEY}|g" dist/assets/*.js
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
