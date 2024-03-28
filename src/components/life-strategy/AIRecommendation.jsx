@@ -8,9 +8,14 @@ import useDialog from '../../hooks/useDialog';
 import CommentIcon from '@mui/icons-material/Comment';
 import Progress from '../Progress';
 
+const { VITE_OPENAI, DEV, PROD } = import.meta?.env;
+
+console.log('AIRecommendation:::VITE_OPENAI, DEV, PROD:::', VITE_OPENAI, DEV, PROD);
+
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
 }));
+
 
 const AIRecommendation = () => {
     const { state, setState } = useContext(LifeStrategyContext);
@@ -67,9 +72,11 @@ const AIRecommendation = () => {
         ],
     };
 
+    // console.log('AIRecommendation:::import.meta.env::::', import.meta.env);
+
     const params = {
         headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_OPENAI}`,
+            Authorization: `Bearer ${DEV ? VITE_OPENAI : 'REPLACE_WITH_GH_SECRET'}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
