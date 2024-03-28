@@ -11,9 +11,6 @@ const Metrics = ({ area }) => {
     useEffect(() => {
         const localState = JSON.parse(localStorage.getItem('state'));
         if (localState) {
-
-            // console.log('Metrics::useEffect::localState:::', localState);
-
             setState(localState);
         }
     }, []);
@@ -70,15 +67,9 @@ const Metrics = ({ area }) => {
         }
     };
 
-    // console.log('Metrics::calculateAreaStatus:::', calculateAreaStatus(state[area]));
-
     const mapAreaStatusToAreasData = (state, area) => {
-        // console.log('Metrics::mapAreaStatusToAreasData::state:::', state);
-
         const updatedState = {...state};
         const [areaStatus, points] = calculateAreaStatus(state[area]);
-
-        console.log('Metrics::mapAreaStatusToAreasData::areaStatus:::', areaStatus);
 
         updatedState.areasData = {
             ...updatedState.areasData,
@@ -91,7 +82,6 @@ const Metrics = ({ area }) => {
         return updatedState;
     };
 
-    // console.log('Metrics::mapAreaStatusToAreasData:::', mapAreaStatusToAreasData(state, area));
 
     const handleSliderChange = (event, newValue) => {
         const stateWithSliderValue = {
@@ -101,14 +91,8 @@ const Metrics = ({ area }) => {
                 ...mapSliderValueToSelectedUnits(selectedUnits(area), newValue),
             },
         };
-
-        // console.log('Metrics::handleSliderChange::111:::', stateWithSliderValue);
-
         const updatedState = calculateAndAddStatusToLifeUnit(stateWithSliderValue);
-
         const updatedStateWithAreaStatus = mapAreaStatusToAreasData(updatedState, area);
-
-        // console.log('Metrics::handleSliderChange::updatedStateWithAreaStatus::222:', updatedStateWithAreaStatus);
 
         localStorage.setItem('state', JSON.stringify(updatedStateWithAreaStatus));
         setSliderValue(newValue);
