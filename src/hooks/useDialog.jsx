@@ -15,6 +15,21 @@ const useDialog = dialogContent => {
         setOpen(false);
     };
 
+    // write a function that parses the content into an array of chanks. Each chunk is wrapped in a Typography component.
+    // The first chunk starts from the beginning of the content and ends at the first occurence of a bullet point or number of
+    // the numbered list. The second chunk starts from the end of the first chunk and ends at the next bullet point or number of
+    // the numbered list, etc.
+
+    const parseContent = content => {
+        return content.split('\n').map((chunk, index) => {
+            return (
+                <Typography variant="h5" component="h1" color="text.darkBlue" sx={{m:2}} key={index}>
+                    {chunk}
+                </Typography>
+            );
+        });
+    };
+
     const openDialog = ({ content }) => {
     // const openDialog = () => {
         content && setContent(content);
@@ -46,9 +61,9 @@ const useDialog = dialogContent => {
                     </IconButton>
                 </DialogTitle>
                 <DialogContent>
-                    <Typography variant="h5" component="h1" color="text.darkBlue" sx={{m:2}}>
-                        {content}
-                    </Typography>
+                    {/* <Typography variant="h5" component="h1" color="text.darkBlue" sx={{m:2}}> */}
+                        {parseContent(content)}
+                    {/* </Typography> */}
                 </DialogContent>
             </Dialog>
         );

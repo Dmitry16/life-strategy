@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { LifeStrategyContext } from '../../context';
 import useDialog from '../../hooks/useDialog';
 import CommentIcon from '@mui/icons-material/Comment';
+import Progress from '../Progress';
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.text.darkBlue,
@@ -15,7 +16,8 @@ const AIRecommendation = () => {
     const { state, setState } = useContext(LifeStrategyContext);
     const [ DialogComponent, openDialog ] = useDialog();
 
-    const [recommendation, setRecommendation] = useState('No recommendation. You are perfect!');
+    const [recommendation, setRecommendation] = useState('No recommendation. You are perfect! ;)');
+    const [loading, setLoading] = useState(false);
 
     // console.log('AIRecommendation:::state:::', state);
 
@@ -40,9 +42,9 @@ const AIRecommendation = () => {
 
     const sysMsg = `You are a helpful personal life coach.
     In a professional tone, based on the [User Data] provide a brief structured recommendation 
-    of 100-150 words use bullet points, numbered lists, etc. (e.g. 1. Do this \n 2. Do that \n 3. Do this etc.)
-    as to what actions to take in order to get a good and balanced life across all areas. Explain how could I 
-    leverage the strong areas in order to improve the weak areas.`;
+    as to what actions to take in order to get a good and balanced life across all areas. Explain how could the User 
+    leverage the strong areas in order to improve the weak areas. Use numbered lists e.g. \n 1. Do this \n 2. Do that \n 3. Do this.
+    The recommendation should have 120-150 words.`;
 
     // const prompt = `User: How can I channel my energy from one life area activity (e.g. meditation) into another (e.g. to find my significant other) ?`;
     
@@ -84,18 +86,28 @@ const AIRecommendation = () => {
     //     method: "POST",
     // };
 
+    // const mockRecommendation = 
+    //     `The main idea is to have all your life areas strong and balanced. To achieve that, you need to get all the life units more or less at the same level and as strong as possible.
+    //     1. Improve the weak units.
+    //     2. Maintain or improve the neutral.
+    //     3. Maintain the strong units or levarage them to improve the weak or neutral ones.`;
+        
     useEffect(() => {
+        // setRecommendation(mockRecommendation);
         if (!state.showAIRecommendation) {
             return;
         }
         fetch(url, params)
+            .then(setLoading(true))
             .then(response => response.json())
             .then(data => {
                 // return data.choices[0].message.content
+                setLoading(false);
                 console.log('AIRecommendation:::useEffect:::data:::', data);
                 setRecommendation(data.choices[0].message.content);
             })
             .catch(error => {
+                setLoading(false);
                 console.log("Error:", error);
                 return Promise.reject(
                     "Ooops! Smth's wrong :/ Please, try again later."
@@ -156,6 +168,7 @@ const AIRecommendation = () => {
                                     }}
                                     primary={recommendation}
                                 />
+                                {loading && <Progress />}
                             </Stack>
                         </ListItem>
                     </List>

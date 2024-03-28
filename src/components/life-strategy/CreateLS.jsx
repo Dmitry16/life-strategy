@@ -15,7 +15,7 @@ const CreateLS = React.memo(() => {
         setState({ ...state, showAIRecommendation: false });
     }, []);
 
-    console.log('CreateLS::state::2:', state);
+    // console.log('CreateLS::state::2:', state);
 
     return (
         <Box sx={{m:0}}>
