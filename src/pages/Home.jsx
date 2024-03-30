@@ -74,7 +74,7 @@ const OptionCard = ({ option, picture, text }) => {
         </CardContent>
       </Box>
       <CardActions sx={{ pb: 2 }}>
-        <ButtonRouter text='Learn More' href={'/about'}/>
+        <ButtonRouter text='Learn More' href={'/life-strategy/about'}/>
       </CardActions>
     </Card>
   )
