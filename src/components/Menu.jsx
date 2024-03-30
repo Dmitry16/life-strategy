@@ -20,6 +20,7 @@ const Menu = () => {
                 <ButtonRouter text='Home' href={'/life-strategy'}/>
                 <ButtonRouter text='Strategize' href={'/life-strategy/strategize'}/>
                 {/* <ButtonRouter text='Login' href={'/login'}/> */}
+                <ButtonRouter text='How-To' href={'/life-strategy/how-to'}/>
                 <ButtonRouter text='About' href={'/life-strategy/about'}/>
             </Toolbar>
         </Box>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Content from './components/Content';
+import Routes from './router/Routes';
 import Footer from './components/Footer';
 import Menu from './components/Menu';
 import { LifeStrategyContext } from './context';
@@ -33,13 +33,12 @@ export default function App() {
           }}>
             <Box
               sx={{
-                // height: '60%',
                 display: 'flex',
                 flexDirection: 'column',
               }}
             >
               <Menu />
-              <Content />
+              <Routes />
             </Box>
             <Footer />
         </Container>
