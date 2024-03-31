@@ -20,7 +20,7 @@ const Footer = () => {
             height: '5em' 
         }}>
             <Typography variant="body2" color="text.darkBlue" align="center">
-                MustHave Technologies © {new Date().getFullYear()}.
+                Mimas_Tek © {new Date().getFullYear()}.
             </Typography>
         </Box>
     );
