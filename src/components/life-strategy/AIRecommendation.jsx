@@ -72,7 +72,7 @@ const AIRecommendation = () => {
 
     const params = {
         headers: {
-            Authorization: `Bearer ${import.meta?.env?.DEV ? VITE_OPENAI : 'REPLACE_WITH_GH_SECRET'}`,
+            Authorization: `Bearer ${import.meta?.env?.DEV ? import.meta.env.VITE_OPENAI : 'REPLACE_WITH_GH_SECRET'}`,
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
