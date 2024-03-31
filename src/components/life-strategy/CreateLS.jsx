@@ -22,7 +22,7 @@ const CreateLS = React.memo(() => {
             <Stack spacing={2}>
                 <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <Typography variant="h5" component="h1" color="text.darkBlue">
-                        Let's create your Life Strategy!
+                        Let's Create Your Life Strategy!
                     </Typography>
                     <Typography variant="body1" component="h1" color="text.darkBlue">
                         <StepperComponent />

@@ -9,8 +9,8 @@ const StyledListItem = styled(ListItem)(({ theme }) => ({
 
 const aboutText = 
 `
-    This app is built by <b>Mimas Technologies</b> leveraging the <u>Artificial Intelligence</u> (OpenAI GPT 4 model). 
-    The goal is to help the User elaborate a personalized Life Strategy. Which would make their life balanced across all the Life Areas. That cosists in analysing the User's data and providing a recommendation.
+    This app is built by <b>Mimas Tek</b> leveraging the <u>Artificial Intelligence</u> (OpenAI GPT 4 model). 
+    The goal is to help the User elaborate a personalized <b>Life Strategy</b>. Which would make their life balanced across all the Life Areas. That cosists in analysing the User's data and providing a recommendation.
     The app recommends what actions to take in order to get a more balanced life. In other words how to improve the weak Ares, maintain the strong ones or leverage them in order to improve the weak and neutral ones.
     The main functionalities are next:
     - <b>Data insertion</b>
