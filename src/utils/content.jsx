@@ -44,23 +44,69 @@ function formatNormalStringText(text) {
 }
 
 // formats the tamplate literal strings text with HTML-like tags transforming them into React components 
-export function transformHtmlLikeTagsToReactComponents(text) {
-// Define a regular expression to match HTML-like tags
-    const htmlTagRegex = /<(\w+)>(.*?)<\/\1>/g;
+// export function transformHtmlLikeTagsToReactComponents(text) {
+// // Define a regular expression to match HTML-like tags
+//     const htmlTagRegex = /<(\w+)>(.*?)<\/\1>/g;
+
+//     // Replace HTML-like tags with React components
+//     let result = [];
+//     let lastIndex = 0;
+//     let match;
+//     while ((match = htmlTagRegex.exec(text)) !== null) {
+//         const [fullMatch, tagName, innerText] = match;
+//         const supportedTags = ['b', 'strong', 'i', 'em', 'u', 'a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'ul', 'ol', 'div', 'span', 'br'];
+//         if (supportedTags.includes(tagName)) {
+//             result.push(text.substring(lastIndex, match.index));
+//             const TagComponent = tagName;
+//             result.push(<TagComponent key={result.length}>{innerText}</TagComponent>);
+//         } else {
+//             // If the tag is not supported, push the original string
+//             result.push(fullMatch);
+//         }
+//         lastIndex = htmlTagRegex.lastIndex;
+//     }
+//     // Push any remaining plain text
+//     result.push(text.substring(lastIndex));
+  
+//     return result;
+// }
+
+function transformHtmlLikeTagsToReactComponents(text) {
+    // Define a regular expression to match HTML-like tags
+    const htmlTagRegex = /<(\w+)([^>]*)>(.*?)<\/\1>/g;
 
     // Replace HTML-like tags with React components
     let result = [];
     let lastIndex = 0;
     let match;
     while ((match = htmlTagRegex.exec(text)) !== null) {
-        const [fullMatch, tagName, innerText] = match;
-        const supportedTags = ['b', 'strong', 'i', 'em', 'u'];
+        const [fullMatch, tagName, attributes, innerText] = match;
+        const supportedTags = ['b', 'strong', 'i', 'em', 'u', 'a']; // Include 'a' tag
         if (supportedTags.includes(tagName)) {
             // Push preceding plain text
             result.push(text.substring(lastIndex, match.index));
-            // Push React component
-            const TagComponent = tagName;
-            result.push(<TagComponent key={result.length}>{innerText}</TagComponent>);
+            // Push React component based on the tag
+            if (tagName === 'a') {
+                // Extract URL, target, and rel attributes
+                const urlMatch = attributes.match(/href="([^"]*)"/);
+                const targetMatch = attributes.match(/target="([^"]*)"/);
+                const relMatch = attributes.match(/rel="([^"]*)"/);
+                
+                // Construct anchor tag component with extracted attributes
+                result.push(
+                    <a 
+                        key={result.length} 
+                        href={urlMatch ? urlMatch[1] : ''} 
+                        target={targetMatch ? targetMatch[1] : '_blank'} 
+                        rel={relMatch ? relMatch[1] : 'noreferrer'}
+                    >
+                        {innerText}
+                    </a>
+                );
+            } else {
+                // Push other supported tag components
+                result.push(React.createElement(tagName, { key: result.length }, innerText));
+            }
         } else {
             // If the tag is not supported, push the original string
             result.push(fullMatch);
