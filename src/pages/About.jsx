@@ -14,8 +14,7 @@ const wrapTextWithLink = (text, url) => <a href={url} target="_blank" rel="noref
 
 const aboutText = 
 `
-    This app is built by <a href="https://dmitry16.github.io/mimas-tek/">Mimas Tek</a> leveraging the Artificial Intelligence (OpenAI GPT 4 model). 
-    The goal is to help the User elaborate a personalized <b>Life Strategy</b>. Which would make their life balanced across all the Life Areas. That cosists in analysing the User's data and providing a recommendation.
+    This web application is built by <a href="https://dmitry16.github.io/mimas-tek/">Mimas Tek</a> leveraging the Artificial Intelligence (OpenAI GPT 4 model). Its goal is to help User elaborate or adjust personalized <b>Life Strategy</b>. If done properly it is supposed to help to make their life balanced across all the Life Areas.
     Also the application can help User to have a bigger picture of their life by looking at the data visualizations of their Life Areas and Units.
     The app recommends what actions to take in order to get a more balanced life. In other words how to improve the weak Ares, maintain the strong ones or leverage them in order to improve the weak and neutral ones.
     The main functionalities are next:
@@ -34,7 +33,7 @@ const aboutText =
     Afterwards the system will provide a recommendation on what actions to take in order to get a good and balanced life across all areas.
 `;
 
-console.log('aboutText:::',  splitLinesAndConvertTagsToReactComponents(aboutText));
+// console.log('aboutText:::',  splitLinesAndConvertTagsToReactComponents(aboutText));
 
 const About = () => {
     return (

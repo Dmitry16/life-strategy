@@ -22,22 +22,25 @@ const imageData = [
   {
     option: 'Design Your Desired Life',
     picture: design1_m,
-    text: 'Design your life with intention, purpose and clarity. Create a life that is meaningful and fulfilling.'
+    text: 'Design your life with intention, purpose and clarity. Create a life that is meaningful and fulfilling.',
+    link: 'how-to',
   },
   {
     option: 'Create Your Life Strategy',
     picture: workWithNotesOnTheWall_m,
-    text: 'Create a life strategy that is aligned with your values and goals. Live a life that is meaningful and fulfilling.'
+    text: 'Create a life strategy that is aligned with your values and goals. Live a life that is meaningful and fulfilling.',
+    link: 'how-to',
   },
   {
     option: 'Strategic Life: Applying Boardroom Thinking to Personal Success',
     picture: meeting1_m,
-    text: 'Learn how to apply boardroom thinking to personal success. Create a life that is strategic and focused.'
+    text: 'Learn how to apply boardroom thinking to personal success. Create a life that is strategic and focused.',
+    link: 'how-to',
   }
 ]
 
 
-const OptionCard = ({ option, picture, text }) => {
+const OptionCard = ({ option, picture, text, link }) => {
   return (
     <Card 
       raised 
@@ -74,7 +77,7 @@ const OptionCard = ({ option, picture, text }) => {
         </CardContent>
       </Box>
       <CardActions sx={{ pb: 2 }}>
-        <ButtonRouter text='Learn More' href={'/life-strategy/about'}/>
+        <ButtonRouter text='Learn More' href={link}/>
       </CardActions>
     </Card>
   )
@@ -102,6 +105,7 @@ const Home = () => {
               option={item.option}
               picture={item.picture}
               text={item.text}
+              link={item.link}
             />
           ))
         }
